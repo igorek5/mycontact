@@ -1,17 +1,43 @@
 import React from 'react';
+import s from './Profile.module.css';
 
 const Profile = () => {
-    return <main className='profile'>
-        <img className='profile__image' src='http://nashahistory.ru/sites/default/files/styles/main_img/public/maxresdefault_1_0.jpg?itok=aCZpYgGD' alt='космос'></img>
-        <section>
-            Avatar + discription
+    return <main>
+
+        <h1 className='visually_hidden'>My contact</h1>
+        <section className={s.user__info}>
+            <h2 className='visually_hidden'>Информация о пользователе</h2>
+            <img className={s.avatar} src='https://sun9-39.userapi.com/impf/c846324/v846324431/be6f1/ba4wGLkudOg.jpg?size=200x0&quality=90&sign=bc933f6e11cf8d3b786333cc6c51c91d' alt='Аватар пользователя' className={s.avatar}></img>
+            <div className={s.discription}>
+                <p /*className={s.user__name}*/>Игорь Баутин</p>
+                <p /*className={s.user__date}*/>День рождения: 10 сентября 1987г.</p>
+                <p /*className={s.user__city}*/>Город: Воронеж</p>
+            </div>
         </section>
-        <div className='Posts'>
-            Posts
-        </div>
-        <div>
-            Post2
-        </div>
+
+        <section className={s.user__foto}>
+            <h2 className='visually_hidden'>Фото пользователя</h2>
+            <img className={s.user__image} src='https://salik.biz/upload/000/u1/2161/62a6747e.jpg' alt='Сеть'></img>
+        </section>
+
+
+        <section className={s.posts}>
+            <h2 className={s.post__title}>My posts</h2>
+            <form method='post' action='#'>
+                <textarea className={s.post__input} name='text' rows='3' placeholder='Что у вас нового?'></textarea>
+                <button type='submit'>Send</button>
+            </form>
+
+            <div className={s.post__user}>
+                <div className={s.post__avatar}></div>
+                <p className={s.post__text}>У меня отличная новость!</p>
+            </div>
+
+            <div className={s.post__user}>
+                <div className={s.post__avatar}></div>
+                <p className={s.post__text}>У меня отличная новость!</p>
+            </div>
+        </section>
     </main>
 }
 

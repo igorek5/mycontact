@@ -1,0 +1,28 @@
+.nav_bar {
+    width: 260px;
+    margin-right: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    
+    background-color: #ffffff;
+    border: 2px solid #e5ddd5;
+    border-radius: 5px;
+}
+    
+.nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+    
+.nav a {
+    color: #000000;
+}
+    
+.nav__item {
+    margin-bottom: 5px;
+}
+
+.nav__settings {
+    margin-top: 35px;
+}
