@@ -23,11 +23,11 @@ const Profile = () => {
 
         <section className={s.posts}>
             <h2 className={s.post__title}>My posts</h2>
-            <form method='post' action='#'>
+            <form className={s.post__form} method='post' action='#'>
                 <textarea className={s.post__input} name='text' rows='3' placeholder='Что у вас нового?'></textarea>
                 <button type='submit'>Send</button>
             </form>
-
+        
             <div className={s.post__user}>
                 <div className={s.post__avatar}></div>
                 <p className={s.post__text}>У меня отличная новость!</p>
@@ -35,7 +35,10 @@ const Profile = () => {
 
             <div className={s.post__user}>
                 <div className={s.post__avatar}></div>
-                <p className={s.post__text}>У меня отличная новость!</p>
+                <p className={s.post__text}>У меня отличная новость!У меня отличная новость!У меня отличная новость!У меня отличная новость!
+                У меня отличная новость!У меня отличная новость!У меня отличная новость!
+                У меня отличная новость!У меня отличная новость!У меня отличная новость!
+                У меня отличная новость!У меня отличная новость!У меня отличная новость!</p>
             </div>
         </section>
     </main>
