@@ -1,3 +1,7 @@
+main {
+    width: 100%;
+}
+
 .user__info {
     display: flex;
     margin-bottom: 10px;
@@ -12,6 +16,18 @@
     background-color: #ffffff;
     border: 2px solid #e5ddd5;
     border-radius: 5px;
+}
+
+@media (max-width: 403px) {
+    .user__info {
+        display: block;
+    }
+    .avatar {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+
 }
 
 .discription {
@@ -29,17 +45,65 @@
     margin-bottom: 5px;
 }
 
-.user__image {
-    width: 100%;
-    height: 200px;
-}
+
 
 .user__foto {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    min-width: 391px;
+    height: 200px;
+    padding: 10px;
     margin-bottom: 10px;
 
+    background-color: #ffffff;
     border: 2px solid #e5ddd5;
     border-radius: 5px;
 }
+
+@media (min-width: 590px) and (max-width: 1024px) {
+    .user__foto {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        height: auto;
+    }
+}
+
+
+@media (min-width: 432px) and (max-width: 589px) {
+    .user__foto {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 431px) {
+    .user__foto {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+
+        height: auto;
+        min-width: 100%;
+    }
+}
+
+
+.user__foto__item {
+    width: 100%;
+    height: 176px;
+}
+
+.user__foto__item img {
+    width: 100%;
+    height: 100%;
+}
+
+
 
 .posts {
     padding: 10px;
@@ -68,16 +132,8 @@
     padding-bottom: 10px;
 }
 
-button {
-display: block;
-padding: 10px 20px;
-margin-left: auto;
-
-color: white;
-text-transform: uppercase;
-
-background-color: rgb(63, 63, 241);
-border-radius: 10px;
+.posts__button {
+    margin-left: auto;
 }
 
 .post__user {
@@ -90,7 +146,7 @@ border-radius: 10px;
 .post__avatar {
     position: absolute;
     top: 4px;
-    left: 10px;
+    left: 0;
     width: 50px;
     height: 50px;
     margin-right: 30px;
@@ -102,8 +158,8 @@ border-radius: 10px;
 .post__user {
     padding-top: 20px;
     padding-bottom: 40px;
-    padding-left: 80px;
-    padding-right: 30px;
+    padding-left: 60px;
+    padding-right: 20px;
     margin-bottom: 10px;
 }
 

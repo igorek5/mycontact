@@ -50,6 +50,17 @@ img {
   padding: 0 10px;
 }
 
+button {
+  display: block;
+  padding: 10px 20px;
+
+  color: white;
+  text-transform: uppercase;
+
+  background-color: rgb(63, 63, 241);
+  border-radius: 10px;
+}
+
 .content__container {
   display: flex;
 }

@@ -1,5 +1,5 @@
 .nav_bar {
-    width: 260px;
+    width: 200px;
     margin-right: 10px;
     padding: 10px;
     padding-left: 20px;
@@ -8,6 +8,14 @@
     border: 2px solid #e5ddd5;
     border-radius: 5px;
 }
+
+@media (max-width: 768px) {
+    .nav_bar {
+        display: none;
+    }
+}
+
+
     
 .nav {
     margin: 0;
