@@ -1,0 +1,14 @@
+.my__posts {
+    padding: 10px;
+
+    background-color: #ffffff;
+    border: 2px solid #e5ddd5;
+    border-radius: 5px;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
