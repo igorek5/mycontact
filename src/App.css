@@ -61,7 +61,7 @@ button {
   border-radius: 10px;
 }
 
-.content__container {
+.container__flex {
   display: flex;
 }
 
