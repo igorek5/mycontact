@@ -15,8 +15,6 @@
     }
 }
 
-
-    
 .nav {
     margin: 0;
     padding: 0;
@@ -24,13 +22,21 @@
 }
     
 .nav a {
+    display: block;
+    padding: 5px 10px;
+
     color: #000000;
 }
-    
-.nav__item {
-    margin-bottom: 5px;
+
+.nav a:hover,
+.nav a:focus {
+    background-color: #E9E9E9;
 }
 
-.nav__settings {
+.nav a.active {
+    color: red;
+}
+
+.settings {
     margin-top: 35px;
 }
