@@ -6,7 +6,7 @@ const PostForm = () => {
         
         <form className={s.form} method='post' action='#'>
             <textarea className={s.input} name='text' rows='3' placeholder='Что у вас нового?'></textarea>
-            <button className={s.posts__button} type='submit'>Send</button>
+            <button className='button' type='submit'>Send</button>
         </form>
 
     )

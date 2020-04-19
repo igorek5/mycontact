@@ -1,0 +1,36 @@
+.dialog__user {
+    border-right: 1px solid #e5ddd5
+}
+
+.link {
+    display: block;
+
+    color: #000000;
+
+}
+
+.link:hover,
+.link:focus {
+    background-color: #F0F0F0;
+}
+
+.link.active {
+    background-color: #F0F0F0;
+}
+
+.item {
+    border-bottom: 1px solid #e5ddd5;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+
+.name {
+    margin: 0;
+    padding-right: 10px;
+    padding-left: 60px;
+    padding-top: 18px;
+    padding-bottom: 25px;
+}
