@@ -19,13 +19,14 @@
 }
 
 .item {
+    position: relative;
+
     border-bottom: 1px solid #e5ddd5;
 }
 
 .item:last-child {
     border-bottom: none;
 }
-
 
 .name {
     margin: 0;

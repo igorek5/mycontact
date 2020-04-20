@@ -12,7 +12,7 @@ const Header = () => {
                     </p>
                     
                 </div>
-                <button className='button'>menu</button>
+                <button className={'button ' + s.btm}>menu</button>
             </div>
 
             <div className={s.nav__menu}>
