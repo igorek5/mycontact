@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Profile.module.css';
-import UserInfo from './UserInfo/UserInfo';
-import UserFoto from './UserFoto/UserFoto';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileFoto from './ProfileFoto/ProfileFoto';
 import MyPosts from './MyPosts/MyPosts';
 
 const Profile = () => {
@@ -10,8 +10,8 @@ const Profile = () => {
 
             <h1 className='visually_hidden'>My contact</h1>
 
-            <UserInfo />
-            <UserFoto />
+            <ProfileInfo />
+            <ProfileFoto />
             <MyPosts />
 
         </main>

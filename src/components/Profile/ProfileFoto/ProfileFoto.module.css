@@ -44,12 +44,12 @@
 }
 
 
-.user__foto__item {
+.foto__item {
     width: 100%;
     height: 176px;
 }
 
-.user__foto__item img {
+.foto__item img {
     width: 100%;
     height: 100%;
 }

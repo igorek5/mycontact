@@ -1,7 +1,7 @@
 import React from 'react';
-import s from './UserInfo.module.css';
+import s from './ProfileInfo.module.css';
 
-const UserInfo = () => {
+const ProfileInfo = () => {
     return (
         <section className={s.user__info}>
             <h2 className='visually_hidden'>Информация о пользователе</h2>
@@ -15,4 +15,4 @@ const UserInfo = () => {
     )
 }
 
-export default UserInfo;
+export default ProfileInfo;
