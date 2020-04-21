@@ -31,31 +31,23 @@ const Dialogs = (props) => {
         {id: 4, message: 'А я вам звезды дам!'}
 ]
 
+    let newDialogs = DialogsData.map(d => (<UserDialog id={d.id} name={d.name}/>));
+
+    let newMessages = MessageDate.map(m => <Message text={m.message}/> );
+
+
 
     return (
 
         <div className={s.wrapper}>
             <div className={s.dialog__user}>
-                <UserDialog name={DialogsData[0].name} id={DialogsData[1].id}/>
-                <UserDialog name={DialogsData[1].name} id={DialogsData[2].id}/>
-                <UserDialog name={DialogsData[3].name} id={DialogsData[3].id}/>
-                <UserDialog name={DialogsData[4].name} id={DialogsData[4].id}/>
-                <UserDialog name={DialogsData[5].name} id={DialogsData[5].id}/>
-                <UserDialog name={DialogsData[6].name} id={DialogsData[6].id}/>
-                <UserDialog name={DialogsData[7].name} id={DialogsData[7].id}/>
-                <UserDialog name={DialogsData[8].name} id={DialogsData[8].id}/>
-                <UserDialog name={DialogsData[9].name} id={DialogsData[9].id}/>
-                <UserDialog name={DialogsData[10].name} id={DialogsData[10].id}/>
-                <UserDialog name={DialogsData[11].name} id={DialogsData[11].id}/>
-                <UserDialog name={DialogsData[12].name} id={DialogsData[12].id}/>
-                <UserDialog name={DialogsData[13].name} id={DialogsData[13].id}/>
-                <UserDialog name={DialogsData[14].name} id={DialogsData[14].id}/>
+
+                { newDialogs }
+
+
             </div>
             <div className={s.messages}>
-                <Message text={MessageDate[0].message} />
-                <Message text={MessageDate[1].message} />
-                <Message text={MessageDate[2].message} />
-                <Message text={MessageDate[3].message} />
+                { newMessages }
             </div>
         </div>
     )
