@@ -4,7 +4,9 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileFoto from './ProfileFoto/ProfileFoto';
 import MyPosts from './MyPosts/MyPosts';
 
-const Profile = () => {
+const Profile = (props) => {
+
+
     return (
         <main className={s.profile}>
 
@@ -12,7 +14,7 @@ const Profile = () => {
 
             <ProfileInfo />
             <ProfileFoto />
-            <MyPosts />
+            <MyPosts post={props.post} />
 
         </main>
     )
