@@ -5,10 +5,6 @@ import PostForm from './PostForm/PostForm';
 
 const MyPosts = (props) => {
 
-    /*let PostData = [
-        {id: 0, message: 'Привет ребзо, как вы?', like: 26},
-        {id: 1, message: 'У меня отличная новость! Да!', like: 10}
-    ]*/
     let newPostData = props.post.map(p => (<Post message={p.message} like={p.like}/> ))
 
     return (

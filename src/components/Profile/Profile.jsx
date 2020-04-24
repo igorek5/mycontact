@@ -13,7 +13,7 @@ const Profile = (props) => {
             <h1 className='visually_hidden'>My contact</h1>
 
             <ProfileInfo />
-            <ProfileFoto />
+            <ProfileFoto foto={props.foto} />
             <MyPosts post={props.post} />
 
         </main>

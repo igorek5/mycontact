@@ -1,8 +1,9 @@
 import React from 'react';
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import Friends from "./Friends/Friends";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <aside className={s.nav_bar}>
             <nav>
@@ -24,6 +25,8 @@ const Navbar = () => {
                     </li>
                 </ul>
             </nav>
+
+            <Friends friends={props.friends}/>
         </aside>
     )
 }
