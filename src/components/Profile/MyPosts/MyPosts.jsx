@@ -11,7 +11,9 @@ const MyPosts = (props) => {
 
         <section className={s.my__posts}>
             <h2 className={s.title}>My posts</h2>
-            <PostForm />
+            <PostForm addPost={props.addPost}
+                      newPostText={props.newPostText}
+                      updateNewPostText={props.updateNewPostText}/>
 
             <div className={s.posts}>
                 { newPostData }

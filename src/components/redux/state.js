@@ -1,4 +1,5 @@
 import React from 'react';
+import {renderEntireTree} from "../../render";
 
 let state = {
     messagesPage: {
@@ -26,7 +27,8 @@ let state = {
             {id: 4, message: 'А я вам звезды дам!'},
             {id: 5, message: 'А я вам звезды дам!'},
             {id: 6, message: 'Проверка на вшивость!'},
-        ]
+        ],
+        newMessageText: 'it-c'
     },
     profilePage: {
         post: [
@@ -40,15 +42,52 @@ let state = {
             {foto: 'https://sun9-45.userapi.com/c847218/v847218183/ccbe1/GypPjHucukA.jpg'},
             {foto: 'https://sun9-44.userapi.com/c847218/v847218443/c9d46/IjWViAXT1C0.jpg'},
             {foto: 'https://sun9-26.userapi.com/c847218/v847218443/c9d59/2UlhylPxhuU.jpg'}
-        ]
+        ],
+        newPostText: ''
     },
     navbarPage: {
         friends: [
             {id: 8, src: 'https://sun9-5.userapi.com/c850136/v850136391/3c5c/XdhWEyo0VLo.jpg', name: 'Рома'},
             {id: 15, src: 'https://sun9-41.userapi.com/c857336/v857336445/11c1eb/rQkSn9DWkto.jpg', name: 'Антон'},
-            {id: 1, src: 'https://sun9-33.userapi.com/impf/c850624/v850624065/1cc4a6/4FqLRbPVcUQ.jpg?size=200x0&quality=90&sign=cd913e64b0690b53a6b8cb2875e60b37', name: 'Кристина'},
+            {
+                id: 1,
+                src: 'https://sun9-33.userapi.com/impf/c850624/v850624065/1cc4a6/4FqLRbPVcUQ.jpg?size=200x0&quality=90&sign=cd913e64b0690b53a6b8cb2875e60b37',
+                name: 'Кристина'
+            },
         ]
     }
+}
+
+
+export let addPost = () => {
+    let newPost = {
+        id: 7,
+        message: state.profilePage.newPostText,
+        Like: 0
+    }
+    state.profilePage.post.push(newPost);
+    state.profilePage.newPostText = '';
+    renderEntireTree(state);
+}
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 9,
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.message.push(newMessage);
+    state.messagesPage.newMessageText = '';
+    renderEntireTree(state);
+}
+
+export let updateNewMessageText = (newText) => {
+     state.messagesPage.newMessageText = newText;
+     renderEntireTree(state);
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    renderEntireTree(state);
 }
 
 export default state;
