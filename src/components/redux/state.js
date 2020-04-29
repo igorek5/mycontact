@@ -1,5 +1,6 @@
-import React from 'react';
-import {renderEntireTree} from "../../render";
+export let renderEntireTree = () => {
+    console.log('привет');
+}
 
 let state = {
     messagesPage: {
@@ -55,7 +56,30 @@ let state = {
                 name: 'Кристина'
             },
         ]
+    },
+    newsPage: {
+        newsMessage: [
+            {id: 1, newsMessage: 'вот это музон'},
+            {id: 1, newsMessage: 'вот это музон'},
+            {id: 1, newsMessage: 'вот это музон'}
+        ],
+        newNewsText: ''
     }
+
+}
+
+export let addNews = () => {
+    let newNews = {
+        id: 1, newsMessage: state.newsPage.newNewsText
+    }
+    state.newsPage.newsMessage.push(newNews);
+    state.newsPage.newNewsText = '';
+    renderEntireTree();
+}
+
+export let updateNewNewsText = (newText) => {
+    state.newsPage.newNewsText = newText;
+    renderEntireTree();
 }
 
 
@@ -67,7 +91,7 @@ export let addPost = () => {
     }
     state.profilePage.post.push(newPost);
     state.profilePage.newPostText = '';
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export let addMessage = () => {
@@ -77,17 +101,21 @@ export let addMessage = () => {
     }
     state.messagesPage.message.push(newMessage);
     state.messagesPage.newMessageText = '';
-    renderEntireTree(state);
+    renderEntireTree();
 }
 
 export let updateNewMessageText = (newText) => {
-     state.messagesPage.newMessageText = newText;
-     renderEntireTree(state);
+    state.messagesPage.newMessageText = newText;
+    renderEntireTree();
 }
 
 export let updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
-    renderEntireTree(state);
+    renderEntireTree();
+}
+
+export let subscribe = (observer) => {
+    renderEntireTree = observer;
 }
 
 export default state;

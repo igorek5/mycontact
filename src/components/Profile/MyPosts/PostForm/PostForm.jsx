@@ -5,7 +5,6 @@ const PostForm = (props) => {
     let newPostElement = React.createRef();
 
     let newPost = () => {
-       let text = newPostElement.current.value;
        props.addPost();
     }
 
