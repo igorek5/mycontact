@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './News.module.css'
+import {addNewsActionCreator, updateNewNewsTextActionCreator} from "../redux/state";
 
 const MessageNews = (props) => {
     return (
@@ -13,12 +14,12 @@ const News = (props) => {
 
     let newNewsElement = React.createRef();
     let addNews = () => {
-        props.dispatch( {type: 'ADD_NEWS'} );
+        props.dispatch( addNewsActionCreator() );
     }
 
     let onMessageChenge = () => {
         let text = newNewsElement.current.value
-        props.dispatch( {type: 'UPDATE_NEW_NEWS_TEXT', newText: text} );
+        props.dispatch( updateNewNewsTextActionCreator(text) );
     }
 
     return (

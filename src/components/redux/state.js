@@ -1,3 +1,12 @@
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+
+const ADD_MESSAGE = 'ADD_MESSAGE';
+const UPDATE_NEW_MASSAGE_TEXT = 'UPDATE_NEW_MASSAGE_TEXT';
+
+const ADD_NEWS ='ADD_NEWS';
+const UPDATE_NEW_NEWS_TEXT ='UPDATE_NEW_NEWS_TEXT';
+
 let store = {
     _state: {
         messagesPage: {
@@ -124,5 +133,19 @@ let store = {
     }
 
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updateNewPostTextActionCreator = (newText) => {
+    return { type: UPDATE_NEW_POST_TEXT, newText: newText }
+}
+
+export  const  addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+export  const  updateNewMessageTextActionCreator = (text) =>
+    ({ type: UPDATE_NEW_MASSAGE_TEXT, newText: text });
+
+export  const  addNewsActionCreator = () => ({ type: ADD_NEWS });
+export  const  updateNewNewsTextActionCreator = (text) =>
+    ({ type: UPDATE_NEW_NEWS_TEXT, newText: text });
+
 
 export default store;
