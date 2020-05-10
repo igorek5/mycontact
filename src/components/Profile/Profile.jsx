@@ -15,9 +15,8 @@ const Profile = (props) => {
             <ProfileInfo />
             <ProfileFoto foto={props.foto} />
             <MyPosts post={props.post}
-                     addPost={props.addPost}
-                     newPostText={props.newPostText}
-                     updateNewPostText={props.updateNewPostText}/>
+                     dispatch={props.dispatch}
+                     newPostText={props.newPostText}/>
 
         </main>
     )

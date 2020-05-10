@@ -1,4 +1,3 @@
-
 let store = {
     _state: {
         messagesPage: {
@@ -64,62 +63,64 @@ let store = {
             newNewsText: ''
         }
     },
-
-    getState() {
-      return this._state
-    },
-
-    callSubscriber() {
+    _callSubscriber() {
         console.log('привет');
     },
 
+    getState() {
+        return this._state
+    },
     subscribe(observer) {
-        this.callSubscriber = observer
+        this._callSubscriber = observer
     },
 
-    addNews() {
-        let newNews = {
-            id: 1, newsMessage: this._state.newsPage.newNewsText
+    dispatch(action) {  // { type: 'ADD_POST' }
+
+        //ProfilePage
+
+        if (action.type === 'ADD_POST') {
+
+            let newPost = {
+                id: 7,
+                message: this._state.profilePage.newPostText,
+                Like: 0
+            }
+            this._state.profilePage.post.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber();
+
+        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber();
+
+            //MessagePage
+
+        } else if (action.type === 'ADD_MESSAGE') {
+            let newMessage = {
+                id: 9,
+                message: this._state.messagesPage.newMessageText,
+            }
+            this._state.messagesPage.message.push(newMessage);
+            this._state.messagesPage.newMessageText = '';
+            this._callSubscriber();
+        } else if (action.type === 'UPDATE_NEW_MASSAGE_TEXT') {
+            this._state.messagesPage.newMessageText = action.newText;
+            this._callSubscriber();
+
+        // NewsPage
+
+        } else if (action.type === 'ADD_NEWS') {
+            let newNews = {
+                id: 2,
+                newsMessage: this._state.newsPage.newNewsText
+            }
+            this._state.newsPage.newsMessage.push(newNews);
+            this._state.newsPage.newNewsText = '';
+            this._callSubscriber();
+        } else  if (action.type === 'UPDATE_NEW_NEWS_TEXT') {
+            this._state.newsPage.newNewsText = action.newText;
+            this._callSubscriber()
         }
-        this._state.newsPage.newsMessage.push(newNews);
-        this._state.newsPage.newNewsText = '';
-        this.callSubscriber();
-    },
-
-    updateNewNewsText(newText) {
-        this._state.newsPage.newNewsText = newText;
-        this.callSubscriber();
-    },
-
-    addPost() {
-        let newPost = {
-            id: 7,
-            message: this._state.profilePage.newPostText,
-            Like: 0
-        }
-        this._state.profilePage.post.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this.callSubscriber();
-    },
-
-    addMessage () {
-        let newMessage = {
-            id: 9,
-            message: this._state.messagesPage.newMessageText
-        }
-        this._state.messagesPage.message.push(newMessage);
-        this._state.messagesPage.newMessageText = '';
-        this.callSubscriber();
-    },
-
-    updateNewMessageText(newText) {
-        this._state.messagesPage.newMessageText = newText;
-        this.callSubscriber();
-    },
-
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this.callSubscriber();
     }
 
 }

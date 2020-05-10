@@ -21,16 +21,14 @@ const App = (props) => {
 
                     <Route path='/profile' render={ () => <Profile post={props.state.profilePage.post}
                                                                    foto={props.state.profilePage.profileFoto}
-                                                                   addPost={props.addPost}
+                                                                   dispatch={props.dispatch}
                                                                    newPostText={props.state.profilePage.newPostText}
-                                                                   updateNewPostText={props.updateNewPostText}/>}  />
+                                                                   />}  />
                     <Route path='/dialogs' render={ () => <Dialogs dialogs={props.state.messagesPage.dialogs}
                                                                    messagesPage={props.state.messagesPage}
-                                                                   addMessage={props.addMessage}
-                                                                   updateNewMessageText={props.updateNewMessageText}/> } />
+                                                                   dispatch={props.dispatch}/> } />
                     <Route path='/news' render={ () => <News newsMessage={props.state.newsPage}
-                                                                addNews={props.addNews}
-                                                             updateNewNewsText={props.updateNewNewsText}/> } />
+                                                             dispatch={props.dispatch}/> } />
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
                

@@ -5,12 +5,12 @@ const PostForm = (props) => {
     let newPostElement = React.createRef();
 
     let newPost = () => {
-       props.addPost();
+       props.dispatch({ type: 'ADD_POST' });
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.dispatch( {type: 'UPDATE_NEW_POST_TEXT', newText: text} );
     }
 
 
@@ -18,7 +18,7 @@ const PostForm = (props) => {
     return (
 
         <div className={s.form}>
-            <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}
+            <textarea onChange={ onPostChange } ref={newPostElement} value={props.newPostText}
                       className={s.input} name='text' rows='3' placeholder='Что у вас нового?'></textarea>
 
             <button onClick={newPost} className='button' type='submit'>Send

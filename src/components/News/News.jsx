@@ -13,12 +13,12 @@ const News = (props) => {
 
     let newNewsElement = React.createRef();
     let addNews = () => {
-        props.addNews();
+        props.dispatch( {type: 'ADD_NEWS'} );
     }
 
     let onMessageChenge = () => {
         let text = newNewsElement.current.value
-        props.updateNewNewsText(text);
+        props.dispatch( {type: 'UPDATE_NEW_NEWS_TEXT', newText: text} );
     }
 
     return (
