@@ -1,11 +1,6 @@
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const UPDATE_NEW_MASSAGE_TEXT = 'UPDATE_NEW_MASSAGE_TEXT';
-
-const ADD_NEWS ='ADD_NEWS';
-const UPDATE_NEW_NEWS_TEXT ='UPDATE_NEW_NEWS_TEXT';
+import messagesReducer from "./messages_reducer";
+import profileReducer from "./profile_reducer";
+import newsReducer from "./news_reducer";
 
 let store = {
     _state: {
@@ -83,69 +78,18 @@ let store = {
         this._callSubscriber = observer
     },
 
-    dispatch(action) {  // { type: 'ADD_POST' }
+    dispatch(action) {                  // актион { type: 'ADD_POST' }
 
-        //ProfilePage
+       this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+       this._state.profilePage =  profileReducer(this._state.profilePage, action);
+       this._state.newsPage = newsReducer(this._state.newsPage, action);
 
-        if (action.type === 'ADD_POST') {
+       this._callSubscriber();
 
-            let newPost = {
-                id: 7,
-                message: this._state.profilePage.newPostText,
-                Like: 0
-            }
-            this._state.profilePage.post.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber();
-
-        } else if (action.type === 'UPDATE_NEW_POST_TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber();
-
-            //MessagePage
-
-        } else if (action.type === 'ADD_MESSAGE') {
-            let newMessage = {
-                id: 9,
-                message: this._state.messagesPage.newMessageText,
-            }
-            this._state.messagesPage.message.push(newMessage);
-            this._state.messagesPage.newMessageText = '';
-            this._callSubscriber();
-        } else if (action.type === 'UPDATE_NEW_MASSAGE_TEXT') {
-            this._state.messagesPage.newMessageText = action.newText;
-            this._callSubscriber();
-
-        // NewsPage
-
-        } else if (action.type === 'ADD_NEWS') {
-            let newNews = {
-                id: 2,
-                newsMessage: this._state.newsPage.newNewsText
-            }
-            this._state.newsPage.newsMessage.push(newNews);
-            this._state.newsPage.newNewsText = '';
-            this._callSubscriber();
-        } else  if (action.type === 'UPDATE_NEW_NEWS_TEXT') {
-            this._state.newsPage.newNewsText = action.newText;
-            this._callSubscriber()
-        }
     }
 
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updateNewPostTextActionCreator = (newText) => {
-    return { type: UPDATE_NEW_POST_TEXT, newText: newText }
-}
-
-export  const  addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export  const  updateNewMessageTextActionCreator = (text) =>
-    ({ type: UPDATE_NEW_MASSAGE_TEXT, newText: text });
-
-export  const  addNewsActionCreator = () => ({ type: ADD_NEWS });
-export  const  updateNewNewsTextActionCreator = (text) =>
-    ({ type: UPDATE_NEW_NEWS_TEXT, newText: text });
 
 
 export default store;
