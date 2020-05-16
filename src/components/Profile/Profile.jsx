@@ -5,8 +5,6 @@ import ProfileFoto from './ProfileFoto/ProfileFoto';
 import MyPosts from './MyPosts/MyPosts';
 
 const Profile = (props) => {
-
-
     return (
         <main className={s.profile}>
 

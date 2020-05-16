@@ -1,8 +1,16 @@
 const ADD_NEWS = 'ADD_NEWS';
 const UPDATE_NEW_NEWS_TEXT = 'UPDATE_NEW_NEWS_TEXT';
 
+let initialState = {
+    newsMessage: [
+        {id: 1, newsMessage: 'вот это музон'},
+        {id: 1, newsMessage: 'вот это музон'},
+        {id: 1, newsMessage: 'вот это музон'}
+    ],
+    newNewsText: ''
+}
 
-const newsReducer = (state, action) => {
+const newsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_NEWS:
