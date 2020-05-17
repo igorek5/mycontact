@@ -8,19 +8,18 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../red
 
 const Dialogs = (props) => {
 
-    let newDialogs = props.dialogs.map(d => (<UserDialog id={d.id} name={d.name}/>));
+    let newDialogs = props.messagesPage.dialogs.map(d => (<UserDialog id={d.id} name={d.name}/>));
 
     let newMessages = props.messagesPage.message.map(m => <Message text={m.message}/>);
 
-    let newMessagElement = React.createRef();
 
     let addMesage = () => {
-        props.dispatch( addMessageActionCreator() );
+        props.addMesage();
     }
 
-    let onMessageChenge = () => {
-        let text = newMessagElement.current.value;
-        props.dispatch( updateNewMessageTextActionCreator(text) )
+    let onMessageChenge = (e) => {
+        let text = e.target.value;
+        props.newMessageText(text);
     }
     return (
 
@@ -34,7 +33,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {newMessages}
                 <div>
-                    <textarea ref={newMessagElement} onChange={onMessageChenge} value={props.messagesPage.newMessageText}></textarea>
+                    <textarea onChange={onMessageChenge} value={props.messagesPage.newMessageText}></textarea>
                     <button onClick={addMesage} className='button'>new massage</button>
                 </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './News.module.css'
-import {addNewsActionCreator, updateNewNewsTextActionCreator} from "../redux/news_reducer";
 
 const MessageNews = (props) => {
     return (
@@ -9,23 +8,24 @@ const MessageNews = (props) => {
 }
 
 const News = (props) => {
-    let newNewsMessage = props.newsMessage.newsMessage.map(el => (<MessageNews id={el.id} text={el.newsMessage} /> ));
+    let newNewsMessage = props.newsPage.newsMessage.map(el => (<MessageNews id={el.id} text={el.newsMessage} /> ));
 
-    let addNews = () => {
-        props.dispatch( addNewsActionCreator() );
+    let onAddNews = () => {
+        props.addNews();
     }
 
     let onMessageChenge = (e) => {
         let text = e.target.value;
-        props.dispatch( updateNewNewsTextActionCreator(text) );
+        props.newNewsText(text);
     }
+
 
     return (
         <div className={s.wrapper}>
 
-                <textarea onChange={onMessageChenge} value={props.newsMessage.newNewsText}></textarea>
+                <textarea onChange={onMessageChenge} value={props.newsPage.newNewsText}></textarea>
 
-                <button onClick={addNews} className='button'>отправить</button>
+                <button onClick={onAddNews} className='button'>отправить</button>
 
             {newNewsMessage}
         </div>

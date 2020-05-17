@@ -26,7 +26,7 @@ const Navbar = (props) => {
                 </ul>
             </nav>
 
-            <Friends friends={props.friends}/>
+            <Friends store={props.store}/>
         </aside>
     )
 }

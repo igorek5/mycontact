@@ -11,10 +11,8 @@ const Profile = (props) => {
             <h1 className='visually_hidden'>My contact</h1>
 
             <ProfileInfo />
-            <ProfileFoto foto={props.foto} />
-            <MyPosts post={props.post}
-                     dispatch={props.dispatch}
-                     newPostText={props.newPostText}/>
+            <ProfileFoto store={props.store} />
+            <MyPosts store={props.store}/>
 
         </main>
     )
