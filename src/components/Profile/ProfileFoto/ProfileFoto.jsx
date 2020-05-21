@@ -10,9 +10,8 @@ const FotoItem = (props) => {
 }
 
 const ProfileFoto = (props) => {
-    let foto = props.store.getState().profilePage.profileFoto
 
-    let newFotoItem = foto.map(f => (<FotoItem src={f.foto} />));
+    let newFotoItem = props.profileFoto.map(f => (<FotoItem src={f.foto} />));
 
         return (
 

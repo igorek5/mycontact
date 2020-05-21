@@ -2,8 +2,6 @@ import React from 'react';
 import s from './Dialogs.module.css'
 import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../redux/messages_reducer";
-
 
 
 const Dialogs = (props) => {
@@ -13,13 +11,13 @@ const Dialogs = (props) => {
     let newMessages = props.messagesPage.message.map(m => <Message text={m.message}/>);
 
 
-    let addMesage = () => {
-        props.addMesage();
+    let addMessage = () => {
+        props.addMessage();
     }
 
     let onMessageChenge = (e) => {
         let text = e.target.value;
-        props.newMessageText(text);
+        props.updateNewMessageText(text);
     }
     return (
 
@@ -34,7 +32,7 @@ const Dialogs = (props) => {
                 {newMessages}
                 <div>
                     <textarea onChange={onMessageChenge} value={props.messagesPage.newMessageText}></textarea>
-                    <button onClick={addMesage} className='button'>new massage</button>
+                    <button onClick={addMessage} className='button'>new massage</button>
                 </div>
 
             </div>

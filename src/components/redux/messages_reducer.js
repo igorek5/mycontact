@@ -27,7 +27,7 @@ let initialStete = {
         {id: 5, message: 'А я вам звезды дам!'},
         {id: 6, message: 'Проверка на вшивость!'},
     ],
-        newMessageText: 'it-c'
+        newMessageText: 'it-cth'
     }
 
 

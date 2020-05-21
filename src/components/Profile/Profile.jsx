@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import ProfileFoto from './ProfileFoto/ProfileFoto';
-import MyPosts from './MyPosts/MyPosts';
+import ProfileFotoContainer from "./ProfileFoto/ProfileFotoContainer";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return (
@@ -11,8 +11,8 @@ const Profile = (props) => {
             <h1 className='visually_hidden'>My contact</h1>
 
             <ProfileInfo />
-            <ProfileFoto store={props.store} />
-            <MyPosts store={props.store}/>
+            <ProfileFotoContainer/>
+            <MyPostsContainer />
 
         </main>
     )

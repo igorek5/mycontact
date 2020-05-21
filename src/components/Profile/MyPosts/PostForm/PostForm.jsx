@@ -9,7 +9,7 @@ const PostForm = (props) => {
 
     let onPostChange = (e) => {
         let text = e.target.value;
-        props.newPostText(text);
+        props.updateNewPostText(text);
     }
 
 
