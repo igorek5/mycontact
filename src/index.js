@@ -7,7 +7,6 @@ import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 import {Provider} from "react-redux";
 
-let renderEntireTree = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -18,11 +17,6 @@ let renderEntireTree = () => {
         </React.StrictMode>,
         document.getElementById('root')
     );
-}
-
-renderEntireTree();
-
-store.subscribe(renderEntireTree);
 
 
 serviceWorker.unregister();

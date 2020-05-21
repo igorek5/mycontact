@@ -31,22 +31,27 @@ let initialStete = {
     }
 
 
-const messagesReducer = (state = initialStete, action) => {
+const messagesReducer = (state= initialStete, action) => {
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage = {
                 id: 9,
                 message: state.newMessageText,
             }
-            state.message.push(newMessage);
-            state.newMessageText = '';
-            return state;
-
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newText;
-            return state
+            let stateCopy = {...state};
+            stateCopy.message = [...state.message];
+            stateCopy.message.push(newMessage);
+            stateCopy.newMessageText = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            let stateCopy = {...state};
+            stateCopy.newMessageText = action.newText;
+            return stateCopy
+        }
         default:
             return state;
+
     }
     return state;
 }
