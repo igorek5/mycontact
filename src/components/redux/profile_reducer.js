@@ -9,10 +9,10 @@ let initialState = {
         {id: 4, message: 'пробаба! Да!', like: 11}
     ],
     profileFoto: [
-        {foto: 'https://sun9-39.userapi.com/c847218/v847218443/c9d21/gSfLy5GU1Xw.jpg'},
-        {foto: 'https://sun9-45.userapi.com/c847218/v847218183/ccbe1/GypPjHucukA.jpg'},
-        {foto: 'https://sun9-44.userapi.com/c847218/v847218443/c9d46/IjWViAXT1C0.jpg'},
-        {foto: 'https://sun9-26.userapi.com/c847218/v847218443/c9d59/2UlhylPxhuU.jpg'}
+        {id: 0, foto: 'https://sun9-39.userapi.com/c847218/v847218443/c9d21/gSfLy5GU1Xw.jpg'},
+        {id: 1, foto: 'https://sun9-45.userapi.com/c847218/v847218183/ccbe1/GypPjHucukA.jpg'},
+        {id: 2, foto: 'https://sun9-44.userapi.com/c847218/v847218443/c9d46/IjWViAXT1C0.jpg'},
+        {id: 3, foto: 'https://sun9-26.userapi.com/c847218/v847218443/c9d59/2UlhylPxhuU.jpg'}
     ],
     newPostText: ''
 }
@@ -20,23 +20,21 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_POST: {
-            let newPost = {
-                id: 7,
-                message: state.newPostText,
-                Like: 0
+        case ADD_POST:
+
+            return {
+                ...state,
+                newPostText: '',
+                post: [{ id: 7, message: state.newPostText, Like: 0}, ...state.post ],
+
+            };
+
+        case UPDATE_NEW_POST_TEXT:
+            return {
+                ...state,
+                newPostText: action.newText
             }
-            let stateCopy = {...state};
-            stateCopy.post = [...state.post];
-            stateCopy.post.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newPostText = action.newText;
-            return stateCopy
-        }
+
         default:
             return state;
     }

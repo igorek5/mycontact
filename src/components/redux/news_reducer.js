@@ -4,8 +4,8 @@ const UPDATE_NEW_NEWS_TEXT = 'UPDATE_NEW_NEWS_TEXT';
 let initialState = {
     newsMessage: [
         {id: 1, newsMessage: 'вот это музон'},
-        {id: 1, newsMessage: 'вот это музон'},
-        {id: 1, newsMessage: 'вот это музон'}
+        {id: 2, newsMessage: 'вот это музон'},
+        {id: 3, newsMessage: 'вот это музон'}
     ],
     newNewsText: ''
 }
@@ -13,22 +13,19 @@ let initialState = {
 const newsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_NEWS: {
-            let newNews = {
-                id: 2,
-                newsMessage: state.newNewsText
+        case ADD_NEWS:
+            return {
+                ...state,
+                newsMessage: [...state.newsMessage, {id: 4, newsMessage: state.newNewsText} ],
+                newNewsText: ''
             }
-            let stateCopy = {...state};
-            stateCopy.newsMessage = [...state.newsMessage];
-            stateCopy.newsMessage.push(newNews);
-            stateCopy.newNewsText = '';
-            return stateCopy;
-        }
-        case UPDATE_NEW_NEWS_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newNewsText = action.newText;
-            return stateCopy;
-        }
+
+        case UPDATE_NEW_NEWS_TEXT:
+            return {
+                ...state,
+                newNewsText: action.newText
+            }
+
         default:
             return state;
     }

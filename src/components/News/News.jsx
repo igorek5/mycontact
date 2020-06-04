@@ -8,7 +8,7 @@ const MessageNews = (props) => {
 }
 
 const News = (props) => {
-    let newNewsMessage = props.newsPage.newsMessage.map(el => (<MessageNews id={el.id} text={el.newsMessage} /> ));
+    let newNewsMessage = props.newsPage.newsMessage.map(el => (<MessageNews id={el.id} key={el.id} text={el.newsMessage} /> ));
 
     let onAddNews = () => {
         props.addNews();

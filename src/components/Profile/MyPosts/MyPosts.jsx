@@ -5,7 +5,7 @@ import PostFormContainer from "./PostForm/PostFotmContainer";
 
 const MyPosts = (props) => {
 
-    let newPostData = props.post.map(p => (<Post message={p.message} like={p.like}/>))
+    let newPostData = props.post.map(p => (<Post message={p.message} key={p.id} like={p.like}/>))
 
     return (
 

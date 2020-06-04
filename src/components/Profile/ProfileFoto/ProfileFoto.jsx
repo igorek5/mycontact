@@ -11,7 +11,7 @@ const FotoItem = (props) => {
 
 const ProfileFoto = (props) => {
 
-    let newFotoItem = props.profileFoto.map(f => (<FotoItem src={f.foto} />));
+    let newFotoItem = props.profileFoto.map(f => (<FotoItem src={f.foto} key={f.id} />));
 
         return (
 
