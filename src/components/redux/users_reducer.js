@@ -6,42 +6,7 @@ const SET_USERS = 'SET_USERS';
 
 
 let initialState = {
-    users: [
-        /*{
-            id: 1,
-            followed: true,
-            fotoUrl: 'sun9-72.userapi.com/c624718/v624718738/3f55/_KShO4LDOos.jpg',
-            UserName: 'Олег К',
-            status: 'Я терм...',
-            location: {country: 'Russia', city: 'Tolyatti'}
-        },
-        {
-            id: 2,
-            followed: false,
-            fotoUrl: 'sun9-72.userapi.com/c624718/v624718738/3f55/_KShO4LDOos.jpg',
-            UserName: 'Олег К',
-            status: 'Я терм...',
-            location: {country: 'Russia', city: 'Tolyatti'}
-
-        },
-        {
-            id: 3,
-            followed: true,
-            fotoUrl: 'sun9-72.userapi.com/c624718/v624718738/3f55/_KShO4LDOos.jpg',
-            UserName: 'Олег К',
-            status: 'Я терм...',
-            location: {country: 'Russia', city: 'Tolyatti'}
-
-        },
-        {
-            id: 4,
-            followed: true,
-            fotoUrl: 'sun9-72.userapi.com/c624718/v624718738/3f55/_KShO4LDOos.jpg',
-            UserName: 'Олег К',
-            status: 'Я терм...',
-            location: {country: 'Russia', city: 'Tolyatti'}
-
-        }*/]
+    users: []
 };
 
 const usersReducer = (state = initialState, action) => {
