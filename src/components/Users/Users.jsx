@@ -11,16 +11,45 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users`).then(respons => {
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageСurrent}&count=${this.props.pageSize}`).then(respons => {
+            this.props.setUsers(respons.data.items);
+            this.props.setTotalUsersCount(respons.data.totalCount);
+        });
+    }
+
+    onPageChange = (pageNumber) => {
+        this.props.setPageCurrent(pageNumber);
+
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(respons => {
             this.props.setUsers(respons.data.items);
         });
     }
 
-    render() {                   //метод рендер вернет на jsx
+    render() {//метод рендер вернет на jsx
+
+        let pageCount = Math.ceil(this.props.totalCount / this.props.pageSize) //подсчитываем кол во страниц, округляем до целого числа
+
+        let pages = [];
+        for (let i = 1; i <= pageCount; i++) {
+            pages.push(i);
+        };
+
         return (
             <div className={style.page_users}>
-                <h2 className={style.title}>Friends</h2>
-
+                <div className={style.pagination_wrapper}>
+                    <h2 className={style.title}>Friends</h2>
+                    <ul className={style.pagination_list}>
+                        {pages.map(p => {
+                               return <li className={style.pagination_item}><a onClick={ () => {this.onPageChange(p)} } className={this.props.pageСurrent === p && style.active}>{p}</a></li>
+                            }
+                        )}
+                        {/*<li className={style.pagination_item}><a href="#" className={style.active}>1</a></li>
+                        <li className={style.pagination_item}><a href="#">2</a></li>
+                        <li className={style.pagination_item}><a href="#">3</a></li>
+                        <li className={style.pagination_item}><a href="#">4</a></li>*/}
+                    </ul>
+                </div>
                 {/* рисуем друзей, мапим*/}
 
                 {this.props.users.map(u => (<div key={u.id}
@@ -29,7 +58,7 @@ class Users extends React.Component {
                         <NavLink to={'/dialogs/' + u.id} activeClassName={style.active}
                                  className={style.foto_link}>
                             <img className={style.foto_img} alt={u.name}
-                                 src={u.photos.small != null ? u.photos.small : userPhoto}/>
+                                 src={u.photos.smail != null ? u.photos.smail : userPhoto}/>
                         </NavLink>
                     </div>
 

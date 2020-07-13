@@ -3,10 +3,14 @@ import React from "react";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
-
+const SET_PAGE_СURRENT = 'SET_PAGE_СURRENT';
+const TOTAL_COUNT = 'TOTAL_COUNT';
 
 let initialState = {
-    users: []
+    users: [],
+    pageSize: 50,
+    totalCount: 0,
+    pageСurrent: 1
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -34,8 +38,18 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users] //склееваем два массива
-
+                users: [...action.users]
+                //users: [...state.users, ...action.users] склееваем два массива
+            }
+        case TOTAL_COUNT:
+            return {
+                ...state,
+                totalCount: action.totalCount
+            }
+        case SET_PAGE_СURRENT:
+            return {
+                ...state,
+                pageСurrent: action.pageCurrent
             }
         default:
             return state;
@@ -48,6 +62,11 @@ export const followAC = (userId) =>
 export const unfollowAC = (userId) =>
     ({type: UNFOLLOW, id: userId});
 export const setUsersAC = (users) =>
-    ({type: SET_USERS, users})
+    ({type: SET_USERS, users});
+export const setPageCurrentAC = (pageCurrent) =>
+    ({type: SET_PAGE_СURRENT, pageCurrent});
+export const usersTotalCountAC = (totalCount) =>
+    ({type: TOTAL_COUNT, totalCount});
+
 
 export default usersReducer;
