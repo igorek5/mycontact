@@ -1,34 +1,10 @@
 import React from "react";
 import style from './Users.module.css'
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
 import userPhoto from '../../assets/images/users_images.png'
 
-
-class Users extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentDidMount() {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageСurrent}&count=${this.props.pageSize}`).then(respons => {
-            this.props.setUsers(respons.data.items);
-            this.props.setTotalUsersCount(respons.data.totalCount);
-        });
-    }
-
-    onPageChange = (pageNumber) => {
-        this.props.setPageCurrent(pageNumber);
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(respons => {
-            this.props.setUsers(respons.data.items);
-        });
-    }
-
-    render() {//метод рендер вернет на jsx
-
-        let pageCount = Math.ceil(this.props.totalCount / this.props.pageSize) //подсчитываем кол во страниц, округляем до целого числа
+const Users = (props) => {
+        let pageCount = Math.ceil(props.totalCount / props.pageSize) //подсчитываем кол во страниц, округляем до целого числа
 
         let pages = [];
         for (let i = 1; i <= pageCount; i++) {
@@ -41,7 +17,7 @@ class Users extends React.Component {
                     <h2 className={style.title}>Friends</h2>
                     <ul className={style.pagination_list}>
                         {pages.map(p => {
-                               return <li className={style.pagination_item}><a onClick={ () => {this.onPageChange(p)} } className={this.props.pageСurrent === p && style.active}>{p}</a></li>
+                               return <li className={style.pagination_item}><a onClick={ () => {props.onPageChange(p)} } className={props.pageСurrent === p && style.active}>{p}</a></li>
                             }
                         )}
                         {/*<li className={style.pagination_item}><a href="#" className={style.active}>1</a></li>
@@ -52,7 +28,7 @@ class Users extends React.Component {
                 </div>
                 {/* рисуем друзей, мапим*/}
 
-                {this.props.users.map(u => (<div key={u.id}
+                {props.users.map(u => (<div key={u.id}
                                                  className={style.item}> {/*props теперь часть обьекта в классовой компоненте this.*/}
                     <div className={style.foto_wrapper}>
                         <NavLink to={'/dialogs/' + u.id} activeClassName={style.active}
@@ -67,9 +43,9 @@ class Users extends React.Component {
                             <div className={style.left_column}>
                                 <div className={style.name}>{u.name}</div>
                                 {u.followed === true
-                                    ? <button onClick={() => this.props.unfollow(u.id)}
+                                    ? <button onClick={() => props.unfollow(u.id)}
                                               className='button'>Отписаться</button>
-                                    : <button onClick={() => this.props.follow(u.id)}
+                                    : <button onClick={() => props.follow(u.id)}
                                               className='button'>Добавить</button>}
                             </div>
                             <div className={style.right_column}>
@@ -85,7 +61,6 @@ class Users extends React.Component {
             </div>
         )
     }
-}
 
 
 export default Users;
