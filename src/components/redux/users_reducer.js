@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_PAGE_СURRENT = 'SET_PAGE_СURRENT';
 const TOTAL_COUNT = 'TOTAL_COUNT';
-
+const TOGGLE_IS_FETCHING = 'TOGLE_IS_FETCHING';
 let initialState = {
     users: [],
     pageSize: 50,
     totalCount: 0,
-    pageСurrent: 1
+    pageСurrent: 1,
+    isFetching: true
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -51,6 +52,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 pageСurrent: action.pageCurrent
             }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default:
             return state;
     }
@@ -67,6 +73,8 @@ export const setPageCurrentAC = (pageCurrent) =>
     ({type: SET_PAGE_СURRENT, pageCurrent});
 export const usersTotalCountAC = (totalCount) =>
     ({type: TOTAL_COUNT, totalCount});
+export const toggleIsFetchingAC = (isFetching) =>
+    ({type: TOGGLE_IS_FETCHING, isFetching});
 
 
 export default usersReducer;
