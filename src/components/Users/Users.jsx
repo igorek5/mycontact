@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Users.module.css'
 import {NavLink} from 'react-router-dom';
 import userPhoto from '../../assets/images/users_images.png'
-import preloader from '../../assets/images/metaballs.gif'
 
 const Users = (props) => {
     let pageCount = Math.ceil(props.totalCount / props.pageSize) //подсчитываем кол во страниц, округляем до целого числа
