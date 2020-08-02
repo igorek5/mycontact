@@ -5,7 +5,7 @@
 
 .avatar {
     width: 200px;
-    height: 200px;
+    height: 250px;
     padding: 10px;
     margin-right: 10px;
 
@@ -35,8 +35,59 @@
     border-radius: 5px;
 }
 
+.top__discription {
+    border-bottom: 2px solid #e5ddd5;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.user__name {
+    margin: 0;
+    padding: 0;
+
+    line-height: 25px;
+}
+
+.user__aboutMe {
+    font-size: 14px;
+    color: #939393;
+}
+
 .discription p {
     margin: 0;
     padding: 0;
     margin-bottom: 5px;
 }
+
+.label {
+    font-weight: bold;
+}
+
+.contacts__list {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.contacts__list a {
+    color: #000000;
+}
+
+.contacts__list li:hover,
+.contacts__list li:focus {
+    opacity: 0.8;
+}
+
+.contacts__list li:active {
+    opacity: 0.6;
+}
+
+.job {
+    text-decoration: underline;
+    text-decoration-color: #939393;
+}
+
+
+
+
+
+

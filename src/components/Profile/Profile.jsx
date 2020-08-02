@@ -1,16 +1,16 @@
 import React from 'react';
-import s from './Profile.module.css';
+import style from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileFotoContainer from "./ProfileFoto/ProfileFotoContainer";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return (
-        <main className={s.profile}>
+        <main className={style.profile}>
 
             <h1 className='visually_hidden'>My contact</h1>
 
-            <ProfileInfo />
+            <ProfileInfo profile={props.profile}/>
             <ProfileFotoContainer/>
             <MyPostsContainer />
 

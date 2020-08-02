@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
 
 let initialState = {
     post: [
@@ -14,6 +15,7 @@ let initialState = {
         {id: 2, foto: 'https://sun9-44.userapi.com/c847218/v847218443/c9d46/IjWViAXT1C0.jpg'},
         {id: 3, foto: 'https://sun9-26.userapi.com/c847218/v847218443/c9d59/2UlhylPxhuU.jpg'}
     ],
+    profile: null,
     newPostText: ''
 }
 
@@ -33,7 +35,13 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: action.newText
-            }
+            };
+
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            };
 
         default:
             return state;
@@ -46,5 +54,6 @@ export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (newText) => {
     return {type: UPDATE_NEW_POST_TEXT, newText: newText}
 }
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export default profileReducer;
