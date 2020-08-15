@@ -1,16 +1,17 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
-import Preloader from "../../common/Preloader";
-
+import Preloader from '../../common/Preloader';
+import userPhoto from '../../../assets/images/users_images.png'
 
 const ProfileInfo = (props) => {
 
     if (!props.profile) {
         return <Preloader/>
     }
+
     return (
         <section className={style.user__info}>
-            <img className={style.avatar} src={props.profile.photos.large} alt='Аватар пользователя'></img>
+            <img className={style.avatar} src={!props.profile.photos.large? userPhoto: props.profile.photos.large} alt='Аватар пользователя'></img>
             <div className={style.discription}>
                 <div className={style.top__discription}>
                     <h2 className={style.user__name}>{props.profile.fullName}</h2>
@@ -21,46 +22,54 @@ const ProfileInfo = (props) => {
                 <p><span className={style.label}>Контакты:</span></p>
 
                 <ul className={style.contacts__list}>
-                    {props.profile.contacts.facebook == null
-                        ? null
-                        : <li className={style.contact__item}>
+
+
+                    {/*{props.profile.contacts.map(p => (<li className={style.contact__item}>
+                            <a href={`https://` + p}>{p}</a>
+                        </li>)
+
+                    )}*/}
+
+                    {(props.profile.contacts.facebook)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.facebook}>{props.profile.contacts.facebook}</a>
-                        </li>}
-                    {props.profile.contacts.website === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.website)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.website}>{props.profile.contacts.website}</a>
-                        </li>}
-                    {props.profile.contacts.vk === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.vk)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.vk}>{props.profile.contacts.vk}</a>
-                        </li>}
-                    {props.profile.contacts.twitter === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.twitter)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.twitter}>{props.profile.contacts.twitter}</a>
-                        </li>}
-                    {props.profile.contacts.instagram === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.instagram)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.instagram}>{props.profile.contacts.instagram}</a>
-                        </li>}
-                    {props.profile.contacts.youtube === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.youtube)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.youtube}>{props.profile.contacts.youtube}</a>
-                        </li>}
-                    {props.profile.contacts.github === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.github)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.github}>{props.profile.contacts.github}</a>
-                        </li>}
-                    {props.profile.contacts.mainLink === null
-                        ? null
-                        : <li className={style.contact__item}>
+                        </li>
+                        : null}
+                    {(props.profile.contacts.mainLink)
+                        ? <li className={style.contact__item}>
                             <a href={`https://` + props.profile.contacts.mainLink}>{props.profile.contacts.mainLink}</a>
-                        </li>}
+                        </li>
+                        : null}
                 </ul>
 
                 {props.profile.lookingForAJob == true

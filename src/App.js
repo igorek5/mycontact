@@ -20,7 +20,7 @@ const App = (props) => {
                 <div className='container container__flex'>
                     <Navbar store={props.store} />
 
-                    <Route path='/profile' render={ () => <ProfileContainer />}  />
+                    <Route path='/profile/:userId?' render={ () => <ProfileContainer />}  />
                     <Route path='/dialogs' render={ () => <DialogsContainer /> } />
                     <Route path='/news' render={ () => <NewsContainer/> } />
                     <Route path='/music' component={Music}/>
