@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Users.module.css'
 import {NavLink} from 'react-router-dom';
 import userPhoto from '../../assets/images/users_images.png'
+import * as axios from "axios";
 
 const Users = (props) => {
     let pageCount = Math.ceil(props.totalCount / props.pageSize); //подсчитываем кол во страниц, округляем до целого числа
@@ -35,7 +36,7 @@ const Users = (props) => {
                     <NavLink to={'/profile/' + u.id} activeClassName={style.active}
                              className={style.foto_link}>
                         <img className={style.foto_img} alt={u.name}
-                             src={u.photos.small != null ? u.photos.small : userPhoto}/>
+                             src={u.photos.small !== null ? u.photos.small : userPhoto}/>
                     </NavLink>
                 </div>
 
@@ -44,9 +45,32 @@ const Users = (props) => {
                         <div className={style.left_column}>
                             <div className={style.name}>{u.name}</div>
                             {u.followed === true
-                                ? <button onClick={() => props.unfollow(u.id)}
+                                ? <button onClick={() =>
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-KEY': 'a59d67e4-9629-42fd-87e6-37502a261641'
+                                        }
+                                    }).then(respons => {
+                                        if (respons.data.resultCode == 0) {
+                                            props.unfollow(u.id)
+                                        }
+                                    })
+
+                                }
                                           className='button'>Отписаться</button>
-                                : <button onClick={() => props.follow(u.id)}
+                                : <button onClick={() =>
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-KEY': 'a59d67e4-9629-42fd-87e6-37502a261641'
+                                        }
+                                    }).then(respons => {
+                                       if (respons.data.resultCode == 0) {
+                                           props.follow(u.id)
+                                       }
+                                    })
+                                }
                                           className='button'>Добавить</button>}
                         </div>
                         <div className={style.right_column}>

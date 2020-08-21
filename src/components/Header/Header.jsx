@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Header.module.css';
+import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
     return <header className={s.header}>
            <div className={s.header__container}> 
                 <div className={s.header__logo}>
@@ -12,7 +13,8 @@ const Header = () => {
                     </p>
                     
                 </div>
-                <button className={'button ' + s.btm}>menu</button>
+               { props.isAuth ? props.userLogin
+                   : <NavLink to={'/login'} className={'button' + ' ' + s.btm}>Войти</NavLink>}
             </div>
 
             <div className={s.nav__menu}>

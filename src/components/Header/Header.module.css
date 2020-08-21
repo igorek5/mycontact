@@ -43,18 +43,6 @@
     }
 }
 
-.btm {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .btm {
-        display: block;
-    }
-}
-
-
-
 .nav__menu {
     display: none;
     position: absolute;
@@ -89,5 +77,10 @@
 .link:hover,
 .link:focus {
     background-color: peru;
+}
+
+.btm {
+    font-size: 14px;
+    line-height: 14px;
 }
 
