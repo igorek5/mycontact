@@ -75,6 +75,10 @@ img {
   opacity: 0.8;
 }
 
+.button:disabled {
+  opacity: 0.2;
+}
+
 .container__flex {
   display: flex;
 }
