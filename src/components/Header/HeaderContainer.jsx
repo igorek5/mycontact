@@ -1,8 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Header from "./Header";
-import {setAuthUserData} from "../redux/auth_reducer";
-import {userAPI} from "../api/api";
+import {setAuthUserDataThC} from "../redux/auth_reducer";
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -10,12 +9,13 @@ class HeaderContainer extends React.Component {
     }
 
     componentDidMount() {
-        userAPI.auth().then(data => {
+        this.props.setAuthUserDataThC()
+        /*userAPI.auth().then(data => {
             if (data.resultCode === 0) {
                 let {email, id, login} = data.data; //деструктуризируем
                 this.props.setAuthUserData(email, id, login);
             }
-        });
+        });*/
 
     }
 
@@ -30,4 +30,4 @@ let mapStateToProps = (state) => ({
     userId: state.auth.userId
 }); //когда возвращает обьект то ставим круглые скобки
 
-export default connect(mapStateToProps, {setAuthUserData})(HeaderContainer);
+export default connect(mapStateToProps, {setAuthUserDataThC})(HeaderContainer);

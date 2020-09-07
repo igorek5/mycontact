@@ -10,7 +10,8 @@ const Users = (props) => {
     let pages = [];
     for (let i = 1; i <= pageCount; i++) {
         pages.push(i);
-    };
+    }
+    ;
     return (
         <div className={style.page_users}>
             <div className={style.pagination_wrapper}>
@@ -50,24 +51,28 @@ const Users = (props) => {
                                     // В этом массиве если кто нибудь равен id пользователя то тогда метод some вернет true
                                     // В противном случае false
                                           onClick={() => {
-                                    props.toggleIsFollowingProgress(true, u.id);
-                                    userAPI.unfollow(u.id).then(data => {
-                                        if (data.resultCode == 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                        props.toggleIsFollowingProgress(false, u.id);
-                                    });
-                                }}
+                                              props.unfollowThC(u.id)
+                                              /*props.toggleIsFollowingProgress(true, u.id);
+                                              userAPI.unfollow(u.id).then(data => {
+                                                  if (data.resultCode == 0) {
+                                                      props.unfollow(u.id)
+                                                  }
+                                                  props.toggleIsFollowingProgress(false, u.id);
+                                              });*/
+                                          }
+                                          }
                                           className='button'>Отписаться</button>
-                                : <button disabled={props.followingInProgress.some(id => id == u.id)} onClick={() => {
-                                    props.toggleIsFollowingProgress(true, u.id);
-                                    userAPI.follow(u.id).then(data => {
-                                        if (data.resultCode == 0) {
-                                            props.follow(u.id)
-                                        }
-                                        props.toggleIsFollowingProgress(false, u.id);
-                                    });
-                                }}
+                                : <button disabled={props.followingInProgress.some(id => id == u.id)}
+                                          onClick={() => {
+                                              props.followThC(u.id);
+                                              /*props.toggleIsFollowingProgress(true, u.id);
+                                              userAPI.follow(u.id).then(data => {
+                                                  if (data.resultCode == 0) {
+                                                      props.follow(u.id)
+                                                  }
+                                                  props.toggleIsFollowingProgress(false, u.id);
+                                              });*/
+                                          }}
                                           className='button'>Добавить</button>}
                         </div>
                         <div className={style.right_column}>
