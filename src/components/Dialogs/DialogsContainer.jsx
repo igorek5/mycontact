@@ -6,7 +6,8 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../red
 
 let mapStateToProps = (state) => {
     return {
-        messagesPage: state.messagesPage
+        messagesPage: state.messagesPage,
+        auth: state.auth.isAuth
     }
 }
 

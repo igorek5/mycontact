@@ -24,16 +24,19 @@ export const userAPI = {
             return response.data;
         });
     },
-    auth() {
-        return instance.get(`auth/me`).then(respons => {
-            return respons.data;
-        })
-    },
     getUserProfile(userId) {
         return instance.get(`profile/` + userId).then(respons => {
             return respons.data;
         })
     }
 };
+
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`).then(respons => {
+            return respons.data;
+        })
+    }
+}
 
 

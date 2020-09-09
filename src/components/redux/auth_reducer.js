@@ -1,5 +1,5 @@
 import React from 'react';
-import {userAPI} from "../api/api";
+import {authAPI, userAPI} from "../api/api";
 
 const SET_Auth_USER_DATA = 'SET_Auth_USER_DATA';
 const IS_USER_AUTH = 'IS_USER_AUTH';
@@ -31,9 +31,9 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (email, userId, login) =>
     ({type: SET_Auth_USER_DATA, data: {email, userId, login}});
 
-export const setAuthUserDataThC = () => {
+export const getAuthUserData = () => {
     return (dispatch) => {
-        userAPI.auth().then(data => {
+        authAPI.me().then(data => {
             if (data.resultCode === 0) {
                 let {email, id, login} = data.data; //деструктуризируем
                 dispatch(setAuthUserData(email, id, login));
