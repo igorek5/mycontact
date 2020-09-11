@@ -2,6 +2,8 @@ import React from 'react';
 import {addNewsActionCreator, updateNewNewsTextActionCreator} from "../redux/news_reducer";
 import News from "./News";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {withHoc} from "../hoc/hocTest";
 
 let mapStateToProps = (state) => {
     return {
@@ -20,7 +22,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-
-const NewsContainer = connect(mapStateToProps, mapDispatchToProps)(News);
-
-export default NewsContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps)
+)(News);

@@ -7,6 +7,7 @@ import {
 import Users from "./Users";
 import Preloader from "../common/Preloader";
 import {withHoc} from "../hoc/hocTest";
+import {compose} from "redux";
 
 
 class UsersContainer extends React.Component {
@@ -54,5 +55,11 @@ let mapStateToProps = (state) => {
 
 /*let AuthRedirectComponent = withHoc(UsersContainer);  И так и так можно */
 
+export default compose(
+    connect(mapStateToProps, {followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator}),
+    withHoc
+    )(UsersContainer);
+
+/*
 export default withHoc(connect(mapStateToProps, {
-    followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator})(UsersContainer));
+    followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator})(UsersContainer));*/

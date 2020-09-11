@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {getUserProfile} from "../redux/profile_reducer";
 import {Redirect, withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
     constructor(props) {
@@ -29,8 +30,17 @@ let mapStateToProps = (state) => ({
     profile: state.profilePage.profile
 }); //когда возвращает обьект то ставим круглые скобки
 
+export default compose(
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter,
+    withAuthRedirect,
+)(ProfileContainer);
+
+
+
+/*
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
 let withUrlDataContainerComponent = withRouter(AuthRedirectComponent );
 
-export default connect(mapStateToProps, {getUserProfile})(withUrlDataContainerComponent)
+export default connect(mapStateToProps, {getUserProfile})(withUrlDataContainerComponent)*/

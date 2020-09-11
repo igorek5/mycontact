@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import Header from "./Header";
 import {getAuthUserData} from "../redux/auth_reducer";
+import {compose} from "redux";
 
 class HeaderContainer extends React.Component {
     constructor(props) {
@@ -23,4 +24,9 @@ let mapStateToProps = (state) => ({
     userId: state.auth.userId
 }); //когда возвращает обьект то ставим круглые скобки
 
-export default connect(mapStateToProps, {getAuthUserData})(HeaderContainer);
+export default compose(
+    connect(mapStateToProps, {getAuthUserData})
+)(HeaderContainer);
+
+/*
+export default connect(mapStateToProps, {getAuthUserData})(HeaderContainer);*/
