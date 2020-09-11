@@ -20,9 +20,6 @@ const Dialogs = (props) => {
         let text = e.target.value;
         props.updateNewMessageText(text);
     }
-
-    if(!props.auth) return <Redirect to='/login'/>
-
     return (
 
         <div className={s.wrapper}>

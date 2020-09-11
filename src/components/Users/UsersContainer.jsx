@@ -6,6 +6,7 @@ import {
 } from "../redux/users_reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
+import {withHoc} from "../hoc/hocTest";
 
 
 class UsersContainer extends React.Component {
@@ -51,29 +52,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-/*let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch( followAC(userId) );
-        },
-        unfollow: (userId) => {
-            dispatch( unfollowAC(userId));
-        },
-        setUsers: (users, totalCount) => {
-            dispatch( setUsersAC(users) );
-        },
-        setPageCurrent: (current) => {
-            dispatch(setPageCurrentAC(current));
-        },
+/*let AuthRedirectComponent = withHoc(UsersContainer);  И так и так можно */
 
-        setTotalUsersCount: (totalCount) => {
-            dispatch( usersTotalCountAC(totalCount) );
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch( toggleIsFetchingAC(isFetching) );
-        }
-    }
-}*/
-
-export default connect(mapStateToProps, {
-    followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator})(UsersContainer);
+export default withHoc(connect(mapStateToProps, {
+    followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator})(UsersContainer));
