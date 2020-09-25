@@ -25,8 +25,27 @@ export const userAPI = {
         });
     },
     getUserProfile(userId) {
+        console.warn('(Obsolete method. Please profileAPI object) Используется устаревший метод. Пожалуйста пользуйтесь profileAPI object')
+        return profileAPI.getUserProfile(userId);
+    }
+};
+
+export const profileAPI = {
+    getUserProfile(userId) {
         return instance.get(`profile/` + userId).then(respons => {
             return respons.data;
+        })
+    },
+
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId).then(respons => {
+            return respons.data;
+        })
+    },
+
+    putStatus(status) {
+        return instance.put(`/profile/status`, {status: status}).then(response => {
+            return response.data;
         })
     }
 };
@@ -37,6 +56,6 @@ export const authAPI = {
             return respons.data;
         })
     }
-}
+};
 
 

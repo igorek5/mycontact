@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Users.module.css'
 import {NavLink} from 'react-router-dom';
 import userPhoto from '../../assets/images/users_images.png'
-import {userAPI} from "../api/api";
 
 const Users = (props) => {
     let pageCount = Math.ceil(props.totalCount / props.pageSize); //подсчитываем кол во страниц, округляем до целого числа
@@ -52,26 +51,12 @@ const Users = (props) => {
                                     // В противном случае false
                                           onClick={() => {
                                               props.unfollowThC(u.id)
-                                              /*props.toggleIsFollowingProgress(true, u.id);
-                                              userAPI.unfollow(u.id).then(data => {
-                                                  if (data.resultCode == 0) {
-                                                      props.unfollow(u.id)
-                                                  }
-                                                  props.toggleIsFollowingProgress(false, u.id);
-                                              });*/
                                           }
                                           }
                                           className='button'>Отписаться</button>
                                 : <button disabled={props.followingInProgress.some(id => id == u.id)}
                                           onClick={() => {
                                               props.followThC(u.id);
-                                              /*props.toggleIsFollowingProgress(true, u.id);
-                                              userAPI.follow(u.id).then(data => {
-                                                  if (data.resultCode == 0) {
-                                                      props.follow(u.id)
-                                                  }
-                                                  props.toggleIsFollowingProgress(false, u.id);
-                                              });*/
                                           }}
                                           className='button'>Добавить</button>}
                         </div>

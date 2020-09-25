@@ -2,20 +2,20 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader';
 import userPhoto from '../../../assets/images/users_images.png'
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = (props) => {
-
     if (!props.profile) {
         return <Preloader/>
     }
-
     return (
         <section className={style.user__info}>
             <img className={style.avatar} src={!props.profile.photos.large? userPhoto: props.profile.photos.large} alt='Аватар пользователя'></img>
             <div className={style.discription}>
                 <div className={style.top__discription}>
                     <h2 className={style.user__name}>{props.profile.fullName}</h2>
-                    <p className={style.user__aboutMe}>{props.profile.aboutMe}</p>
+                    <ProfileStatus status={props.userStatus} updateUserStatus={props.updateUserStatus}/>
+
                 </div>
                 <p><span className={style.label}>День рождения:</span> 10 сентября 1987г.</p>
                 <p><span className={style.label}>Город:</span> Воронеж</p>
@@ -77,6 +77,8 @@ const ProfileInfo = (props) => {
                         <span className={style.label}>Ищю работу: </span>{props.profile.lookingForAJobDescription}
                     </p>
                     : null}
+
+                {props.profile.aboutMe && <p><span className={style.label}>Обо мне: </span>{props.profile.aboutMe}</p>}
 
 
             </div>

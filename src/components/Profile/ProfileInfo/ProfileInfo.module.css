@@ -43,14 +43,9 @@
 
 .user__name {
     margin: 0;
+    margin-bottom: 5px;
     padding: 0;
-
     line-height: 25px;
-}
-
-.user__aboutMe {
-    font-size: 14px;
-    color: #939393;
 }
 
 .discription p {

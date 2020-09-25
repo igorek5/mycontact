@@ -1,0 +1,21 @@
+.status {
+    font-size: 14px;
+    line-height: 18px;
+    color: #939393;
+}
+
+.status:hover {
+    background-color: #edeef0;
+}
+
+.input_status {
+    width: 100%;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+
+
+
+
+

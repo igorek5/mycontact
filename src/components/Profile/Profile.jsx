@@ -10,7 +10,9 @@ const Profile = (props) => {
 
             <h1 className='visually_hidden'>My contact</h1>
 
-            <ProfileInfo profile={props.profile}/>
+            <ProfileInfo profile={props.profile}
+                         userStatus={props.userStatus}
+                         updateUserStatus={props.updateUserStatus}/>
             <ProfileFotoContainer/>
             <MyPostsContainer />
 
