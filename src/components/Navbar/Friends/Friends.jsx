@@ -3,8 +3,7 @@ import s from './Friends.module.css'
 import {NavLink} from "react-router-dom";
 
 const Friends = (props) => {
-
-    let friend = props.store.getState().navbarPage.friends
+    let friend = props.friends
         .map(f => (<NavLink to={'/dialogs/' + f.id} key={f.id}>
             <img className={s.image} alt='Друзья' src={f.src}/>
         </NavLink>))

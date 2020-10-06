@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import Friends from "./Friends/Friends";
+import FriendsContainer from "./Friends/FriendsContainer";
 
 const Navbar = (props) => {
     return (
@@ -29,7 +29,7 @@ const Navbar = (props) => {
                 </ul>
             </nav>
 
-            <Friends store={props.store}/>
+            <FriendsContainer/>
         </aside>
     )
 }

@@ -11,7 +11,7 @@ import {Provider} from "react-redux";
         <React.StrictMode>
             <BrowserRouter>
                 <Provider store={store}>
-                    <App store={store}/>
+                    <App state={store.getState()}/>
                 </Provider>
             </BrowserRouter>
         </React.StrictMode>,

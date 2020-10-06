@@ -44,7 +44,7 @@ export const profileAPI = {
     },
 
     putStatus(status) {
-        return instance.put(`/profile/status`, {status: status}).then(response => {
+        return instance.put(`profile/status`, {status: status}).then(response => {
             return response.data;
         })
     }
@@ -53,6 +53,17 @@ export const profileAPI = {
 export const authAPI = {
     me() {
         return instance.get(`auth/me`).then(respons => {
+            return respons.data;
+        })
+    },
+    loginRegister(email, password, rememberMe) {
+        return instance.post(`auth/login`, {email: email, password: password, rememberMe: rememberMe})
+            .then(respons => {
+            return respons.data;
+        })
+    },
+    loginDelete() {
+        return instance.delete(`auth/login`).then(respons => {
             return respons.data;
         })
     }

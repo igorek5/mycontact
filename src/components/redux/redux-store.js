@@ -1,11 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from 'redux-thunk'
-import messagesReducer from "./messages_reducer";
-import profileReducer from "./profile_reducer";
-import newsReducer from "./news_reducer";
-import navbarReducer from "./navbar_reducer";
-import usersReducer from "./users_reducer";
-import authReducer from "./auth_reducer";
+import messagesReducer from './messages_reducer';
+import profileReducer from './profile_reducer';
+import newsReducer from './news_reducer';
+import navbarReducer from './navbar_reducer';
+import usersReducer from './users_reducer';
+import authReducer from './auth_reducer';
+import {reducer as formReducer} from 'redux-form'
 
 let reducers = combineReducers({
     messagesPage: messagesReducer,
@@ -13,8 +14,9 @@ let reducers = combineReducers({
     navbarPage: navbarReducer,
     newsPage: newsReducer,
     usersPage: usersReducer,
-    auth: authReducer
-})
+    auth: authReducer,
+    form: formReducer
+});
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 

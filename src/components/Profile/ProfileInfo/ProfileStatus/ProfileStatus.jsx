@@ -3,6 +3,14 @@ import style from './ProfileStatus.module.css'
 
 class ProfileStatus extends React.Component {
 
+    componentDidUpdate(prevProps, prevState) { //  componentDidUpdate говорит что что-то обновилось или props или компонента и на это можно отреагировать, совершить действия, попав в componentDidUpdate мы можем что-то химичить
+        if (prevProps.status !== this.props.status) { //setState внутри componentDidUpdate должен быть с условием иначе зациклица
+            this.setState({
+                status: this.props.status
+            });
+        }
+    }
+
     onChangeStatus = (e) => {
        let status = e.currentTarget.value;
        this.setState({
@@ -41,7 +49,7 @@ class ProfileStatus extends React.Component {
                 {this.state.editMode &&
                     <div>
                         <input onChange={this.onChangeStatus} autoFocus={true}  onBlur={this.deactivateEditMode} // onBlur событие срабатывает когда фокус уйдет  с поля
-                        className={style.input_status} value={this.state.status} on/>
+                        className={style.input_status} value={this.state.status}/>
                     </div>
                 }
             </div>

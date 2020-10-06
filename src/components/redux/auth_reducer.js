@@ -1,8 +1,9 @@
 import React from 'react';
-import {authAPI, userAPI} from "../api/api";
+import {authAPI} from "../api/api";
 
 const SET_Auth_USER_DATA = 'SET_Auth_USER_DATA';
 const IS_USER_AUTH = 'IS_USER_AUTH';
+const SET_LOGIN_REGISTER = 'SET_LOGIN_REGISTER';
 
 let initialState = {
     email: null,
@@ -10,7 +11,8 @@ let initialState = {
     login: null,
 
     isAuth: false,
-    isFetching: true
+    isFetching: true,
+    userIdRegister: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -20,6 +22,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.data,
                 isAuth: true
+            };
+        case SET_LOGIN_REGISTER:
+            return {
+                ...state,
+                userIdRegister: action.userIdRegister
             }
 
         default:
@@ -28,7 +35,7 @@ const authReducer = (state = initialState, action) => {
     return state;
 }
 
-export const setAuthUserData = (email, userId, login) =>
+const setAuthUserData = (email, userId, login) =>
     ({type: SET_Auth_USER_DATA, data: {email, userId, login}});
 
 export const getAuthUserData = () => {
@@ -37,6 +44,20 @@ export const getAuthUserData = () => {
             if (data.resultCode === 0) {
                 let {email, id, login} = data.data; //деструктуризируем
                 dispatch(setAuthUserData(email, id, login));
+            }
+        });
+    }
+}
+
+const setloginRegisteAC = (userIdRegister) =>
+    ({type: SET_LOGIN_REGISTER, userIdRegister});
+
+export const setloginRegister = (email, password, rememberMe) => {
+    return (dispatch) => {
+        authAPI.loginRegister(email, password, rememberMe).then(data => {
+            debugger
+            if (data.resultCode === 0) {
+                dispatch(setloginRegisteAC(data.data.userId));
             }
         });
     }

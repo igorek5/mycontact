@@ -1,0 +1,11 @@
+.login {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px solid #e5ddd5;
+    border-radius: 5px;
+}
+
+.password_info {
+    margin-bottom: 10px;
+}
