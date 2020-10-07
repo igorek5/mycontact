@@ -1,7 +1,6 @@
 import {profileAPI, userAPI} from "../api/api";
 
 const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_PROFILE_STATUS ='SET_PROFILE_STATUS';
 
@@ -19,7 +18,6 @@ let initialState = {
         {id: 3, foto: 'https://sun9-26.userapi.com/c847218/v847218443/c9d59/2UlhylPxhuU.jpg'}
     ],
     profile: null,
-    newPostText: '',
     profileStatus: null
 }
 
@@ -28,17 +26,11 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
 
+           let newPostText = action.text;
             return {
                 ...state,
-                newPostText: '',
-                post: [{id: 7, message: state.newPostText, Like: 0}, ...state.post],
+                post: [{id: 7, message: newPostText, Like: 0}, ...state.post],
 
-            };
-
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
             };
 
         case SET_USER_PROFILE:
@@ -59,10 +51,7 @@ const profileReducer = (state = initialState, action) => {
     return state
 };
 
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (newText) => {
-    return {type: UPDATE_NEW_POST_TEXT, newText: newText}
-};
+export const addPostActionCreator = (text) => ({type: ADD_POST, text});
 
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
