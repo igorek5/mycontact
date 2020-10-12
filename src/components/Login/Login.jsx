@@ -1,21 +1,25 @@
 import React from "react";
 import style from './Login.module.css'
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../common/FormsControls/FormsControls";
+import {requiredField, maxLenghtValidator} from "../utils/validators/Validators";
+
+const maxLenght10 = maxLenghtValidator(10)
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <p>
-                <Field component={"input"} type={"email"} name={"email"} placeholder={"Email"}/>
+                <Field component={Input} type={"email"} name={"email"} placeholder={"Email"} validate={[requiredField]}/>
             </p>
 
             <p>
-                <Field component={"input"} type={"password"} name={"password"} placeholder={"Пароль"}/>
+                <Field component={Input} type={"password"} name={"password"} placeholder={"Пароль"} validate={[requiredField]}/>
             </p>
 
             <div className={style.password_info}>
                 <label className={style.login_checkbox}>
-                   <Field component={"input"} type={"checkbox"} name={"rememberMy"}/>
+                   <Field component={Input} type={"checkbox"} name={"rememberMy"}/>
                     Запомните меня
                 </label>
             </div>

@@ -3,14 +3,15 @@ import s from './Dialogs.module.css'
 import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
+import {maxLenghtValidator, requiredField} from "../utils/validators/Validators";
+import {Textarea} from "../common/FormsControls/FormsControls";
 
-
+const maxLengt20 = maxLenghtValidator(20);
 
 const DialogForm = (props) => {
-
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={'textarea'} name={'message'}></Field>
+            <Field component={Textarea} name={'message'} validate={[requiredField, maxLengt20]}></Field>
             <button className='button'>new massage</button>
         </form>
     )
