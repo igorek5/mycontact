@@ -62,7 +62,7 @@ export const authAPI = {
             return respons.data;
         })
     },
-    loginDelete() {
+    logOut() {
         return instance.delete(`auth/login`).then(respons => {
             return respons.data;
         })

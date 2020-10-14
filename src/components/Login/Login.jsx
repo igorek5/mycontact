@@ -3,8 +3,10 @@ import style from './Login.module.css'
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {requiredField, maxLenghtValidator} from "../utils/validators/Validators";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
-const maxLenght10 = maxLenghtValidator(10)
+const maxLenght10 = maxLenghtValidator(10);
 
 const LoginForm = (props) => {
     return (
@@ -34,11 +36,14 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
-
     const onSubmit = (fromData) => {
         console.log(fromData);
-        props.setloginRegister(fromData.email, fromData.password, fromData.rememberMy)
+        props.setlogin(fromData.email, fromData.password, fromData.rememberMy)
     };
+
+if (props.isAuth) {
+    return <Redirect to='/profile'/>
+}
 
     return <section className={style.login}>
         <h2>Login</h2>
@@ -49,4 +54,8 @@ const Login = (props) => {
 
 };
 
-export default Login;
+const mapDispatchToProps = (state) => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapDispatchToProps, {})(Login);

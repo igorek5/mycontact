@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Header from "./Header";
-import {getAuthUserData} from "../redux/auth_reducer";
+import {getAuthUserData, logOut} from "../redux/auth_reducer";
 import {compose} from "redux";
 
 class HeaderContainer extends React.Component {
@@ -14,7 +14,7 @@ class HeaderContainer extends React.Component {
     }
 
     render() {
-        return <Header {...this.props} isAuth={this.props.isAuth} userId={this.props.userId}/>
+        return <Header {...this.props} isAuth={this.props.isAuth} userId={this.props.userId} logOut={this.props.logOut}/>
     }
 
 }
@@ -25,7 +25,7 @@ let mapStateToProps = (state) => ({
 }); //когда возвращает обьект то ставим круглые скобки
 
 export default compose(
-    connect(mapStateToProps, {getAuthUserData})
+    connect(mapStateToProps, {getAuthUserData, logOut})
 )(HeaderContainer);
 
 /*
