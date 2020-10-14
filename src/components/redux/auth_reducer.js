@@ -1,8 +1,8 @@
 import React from 'react';
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const AUTH_USER_DATA = 'AUTH_USER_DATA';
-const IS_USER_AUTH = 'IS_USER_AUTH';
 const SET_LOGIN_REGISTER = 'SET_LOGIN_REGISTER';
 
 let initialState = {
@@ -56,6 +56,9 @@ export const setlogin = (email, password, rememberMe) => {
         authAPI.loginRegister(email, password, rememberMe).then(data => {
             if (data.resultCode === 0) {
                 dispatch(getAuthUserData());
+            } else {
+                let message = data.messages.length > 0 ? data.messages[0] : 'Ошибка';
+               dispatch(stopSubmit('login', {_error: message }))
             }
         });
     }

@@ -9,3 +9,7 @@
 .password_info {
     margin-bottom: 10px;
 }
+
+.error_massage {
+    color: red;
+}
