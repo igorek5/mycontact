@@ -1,4 +1,3 @@
-import React from 'react';
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
@@ -39,17 +38,14 @@ const authUserData = (email, userId, login, isAuth) =>
 
 export const getAuthUserData = () => {
     return (dispatch) => {
-        authAPI.me().then(data => {
+        return authAPI.me().then(data => {
             if (data.resultCode === 0) {
                 let {email, id, login} = data.data; //деструктуризируем
                 dispatch(authUserData(email, id, login, true));
             }
         });
     }
-}
-
-const setloginRegisteAC = (userIdRegister) =>
-    ({type: SET_LOGIN_REGISTER, userIdRegister});
+};
 
 export const setlogin = (email, password, rememberMe) => {
     return (dispatch) => {
