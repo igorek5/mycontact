@@ -95,6 +95,7 @@ export const toggleIsFollowingProgress = (isFetching, userId) =>
 export const getUsersThunkCreator = (pageСurrent, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
+        dispatch(setPageCurrent(pageСurrent));
         userAPI.getUsers(pageСurrent, pageSize).then(data => {
             dispatch(toggleIsFetching(false));
             dispatch(setUsers(data.items));
@@ -127,5 +128,30 @@ export const unfollowThC = (userId) => {
     }
 };
 
+// селекторы
+
+export const getUsers = (state) => {
+    return state.usersPage.users
+};
+
+export const getPageSize = (state) => {
+    return state.usersPage.pageSize
+};
+
+export const getTotalCount = (state) => {
+    return state.usersPage.totalCount
+};
+
+export const getPageСurrent = (state) => {
+    return state.usersPage.pageСurrent
+};
+
+export const getIsFetching = (state) => {
+    return state.usersPage.isFetching
+};
+
+export const getFollowingInProgress = (state) => {
+    return state.usersPage.followingInProgress
+};
 
 export default usersReducer;
