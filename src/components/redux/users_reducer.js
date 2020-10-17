@@ -1,5 +1,5 @@
-import React from 'react';
 import {userAPI} from "../api/api";
+import {createSelector} from "reselect";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -130,9 +130,26 @@ export const unfollowThC = (userId) => {
 
 // селекторы
 
-export const getUsers = (state) => {
+const getUsers = (state) => {
     return state.usersPage.users
 };
+
+/*export const getUsersSelect = (state) => { // пример, если создть такой селектор, то метод filter будет постоянно копировать обьект и запускать перересовку если где-то в state поменяется что-то в другом месте
+    return getUsers(state).filter(u => true)
+};*/
+
+/*export const getUsersSelector = createSelector(getUsers, getIsFetching,
+    (users, isFetchung) => {
+        console.log('тронул')   // пример добовления нескольких зависимостей
+        return users.filter(u => true)
+    });*/
+
+export const getUsersSelector = createSelector(getUsers,
+    (users) => {
+    console.log('тронул')
+    return users.filter(u => true)
+    });
+
 
 export const getPageSize = (state) => {
     return state.usersPage.pageSize

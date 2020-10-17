@@ -1,8 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    setPageCurrent, getUsersThunkCreator,
-    followThC, unfollowThC, getUsers, getPageSize, getTotalCount, getPageСurrent, getIsFetching, getFollowingInProgress
+    setPageCurrent,
+    getUsersThunkCreator,
+    followThC,
+    unfollowThC,
+    getPageSize,
+    getTotalCount,
+    getPageСurrent,
+    getIsFetching,
+    getFollowingInProgress,
+    getUsersSelector
 } from "../redux/users_reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
@@ -44,7 +52,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: getUsers(state),
+        users: getUsersSelector(state),
         pageSize: getPageSize(state),
         totalCount: getTotalCount(state),
         pageСurrent: getPageСurrent(state),
