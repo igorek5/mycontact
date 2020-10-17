@@ -2,19 +2,21 @@ import React from 'react';
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader';
 import userPhoto from '../../../assets/images/users_images.png'
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusWithHook from "./ProfileStatus/ProfileStatusWithHook";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
+
     return (
         <section className={style.user__info}>
             <img className={style.avatar} src={!props.profile.photos.large? userPhoto: props.profile.photos.large} alt='Аватар пользователя'></img>
             <div className={style.discription}>
                 <div className={style.top__discription}>
                     <h2 className={style.user__name}>{props.profile.fullName}</h2>
-                    <ProfileStatus status={props.userStatus} updateUserStatus={props.updateUserStatus}/>
+
+                    { props.userStatus ? <ProfileStatusWithHook status={props.userStatus} updateUserStatus={props.updateUserStatus}/> : <Preloader/>}
 
                 </div>
                 <p><span className={style.label}>День рождения:</span> 10 сентября 1987г.</p>
