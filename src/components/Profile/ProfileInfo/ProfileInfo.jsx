@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
                 <div className={style.top__discription}>
                     <h2 className={style.user__name}>{props.profile.fullName}</h2>
 
-                    { props.userStatus ? <ProfileStatusWithHook status={props.userStatus} updateUserStatus={props.updateUserStatus}/> : <Preloader/>}
+                    <ProfileStatusWithHook status={props.userStatus} updateUserStatus={props.updateUserStatus}/>
 
                 </div>
                 <p><span className={style.label}>День рождения:</span> 10 сентября 1987г.</p>
