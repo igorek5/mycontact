@@ -6,7 +6,7 @@ let mapStateToPost = (state) => {
     return {
         post: state.profilePage.post
     }
-}
+};
 
 const MyPostsContainer = connect(mapStateToPost)(MyPosts);
 

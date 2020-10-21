@@ -24,7 +24,7 @@ const PostReduxForm = reduxForm({form: 'profilePost'})(PostNewForm);
 const PostForm = (props) => {
     let newPost = (value) => {
         props.addPost(value.text);
-    }
+    };
 
     /*let onPostChange = (e) => {
         let text = e.target.value;

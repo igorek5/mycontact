@@ -7,24 +7,25 @@ const FotoItem = (props) => {
             <img alt="Фото" src={props.src}/>
         </div>
     )
-}
+};
 
-const ProfileFoto = (props) => {
 
-    let newFotoItem = props.profileFoto.map(f => (<FotoItem src={f.foto} key={f.id} />));
+const ProfileFoto = React.memo(props => {
+
+        let newFotoItem = props.profileFoto.map(f => (<FotoItem src={f.foto} key={f.id}/>));
 
         return (
 
-        <section className={s.user__foto}>
-            <h2 className='visually_hidden'>Фото пользователя</h2>
+            <section className={s.user__foto}>
+                <h2 className='visually_hidden'>Фото пользователя</h2>
 
-            { newFotoItem }
+                {newFotoItem}
 
 
+            </section>
 
-        </section>
+        )
+    });
 
-    )
-}
 
 export default ProfileFoto;
