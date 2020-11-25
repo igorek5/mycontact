@@ -1,4 +1,5 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
+const ADD_MESSAGE = 'myContact/messages/ADD_MESSAGE';
+const DELETE_MESSAGE = 'myContact/messages/DELETE_MESSAGE';
 
 let initialState = {
         dialogs: [
@@ -36,7 +37,12 @@ const messagesReducer = (state= initialState, action) => {
             return {
                 ...state,
                 message: [...state.message, {id: 9, message: action.text}],
-            }
+            };
+        case DELETE_MESSAGE:
+            return {
+                ...state,
+                message: state.message.filter(m => m.id != action.idMessage)
+            };
 
         default:
             return state;
@@ -47,5 +53,8 @@ const messagesReducer = (state= initialState, action) => {
 
 export  const  addMessageActionCreator = (text) =>
     ({ type: ADD_MESSAGE, text });
+
+export const deleteMessageAC = (idMessage) =>
+    ({type: DELETE_MESSAGE, idMessage});
 
 export default messagesReducer;

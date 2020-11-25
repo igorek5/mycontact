@@ -1,8 +1,8 @@
 import {authAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
-const AUTH_USER_DATA = 'AUTH_USER_DATA';
-const SET_LOGIN_REGISTER = 'SET_LOGIN_REGISTER';
+const AUTH_USER_DATA = 'myContact/auth/AUTH_USER_DATA';
+const SET_LOGIN_REGISTER = 'myContact/auth/SET_LOGIN_REGISTER';
 
 let initialState = {
     email: null,
@@ -37,36 +37,34 @@ const authUserData = (email, userId, login, isAuth) =>
     ({type: AUTH_USER_DATA, data: {email, userId, login, isAuth}});
 
 export const getAuthUserData = () => {
-    return (dispatch) => {
-        return authAPI.me().then(data => {
-            if (data.resultCode === 0) {
-                let {email, id, login} = data.data; //деструктуризируем
-                dispatch(authUserData(email, id, login, true));
-            }
-        });
+    return async (dispatch) => {
+
+        let data = await authAPI.me();
+        if (data.resultCode === 0) {
+            let {email, id, login} = data.data; //деструктуризируем
+            dispatch(authUserData(email, id, login, true));
+        }
     }
 };
 
 export const setlogin = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.loginRegister(email, password, rememberMe).then(data => {
-            if (data.resultCode === 0) {
-                dispatch(getAuthUserData());
-            } else {
-                let message = data.messages.length > 0 ? data.messages[0] : 'Ошибка';
-               dispatch(stopSubmit('login', {_error: message }))
-            }
-        });
+    return async (dispatch) => {
+        let data = await authAPI.loginRegister(email, password, rememberMe);
+        if (data.resultCode === 0) {
+            dispatch(getAuthUserData());
+        } else {
+            let message = data.messages.length > 0 ? data.messages[0] : 'Ошибка';
+            dispatch(stopSubmit('login', {_error: message}))
+        }
     }
 };
 
 export const logOut = () => {
-    return (dispatch) => {
-        authAPI.logOut().then(data => {
-            if (data.resultCode === 0) {
-                dispatch(authUserData(null, null, null, false));
-            }
-        });
+    return async (dispatch) => {
+        let data = await authAPI.logOut();
+        if (data.resultCode === 0) {
+            dispatch(authUserData(null, null, null, false));
+        }
     }
 };
 

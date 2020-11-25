@@ -1,16 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    setPageCurrent,
     getUsersThunkCreator,
     followThC,
     unfollowThC,
     getPageSize,
     getTotalCount,
-    getPageСurrent,
     getIsFetching,
     getFollowingInProgress,
-    getUsersSelector
+    getUsersSelector, getPageCurrent
 } from "../redux/users_reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader";
@@ -19,23 +17,22 @@ import {compose} from "redux";
 
 
 class UsersContainer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
-        this.props.getUsers(this.props.pageСurrent, this.props.pageSize);
+        const {pageCurrent, pageSize} = this.props;  // лучше сделать деструктуризацию
+        this.props.getUsers(pageCurrent, pageSize);
     }
 
     onPageChange = (pageNumber) => {
-        this.props.setPageCurrent(pageNumber);
-        this.props.getUsers(pageNumber, this.props.pageSize);
-    }
+        const {pageSize} = this.props;  // лучше сделать деструктуризацию
+        this.props.getUsers(pageNumber, pageSize);
+    };
+
 
     render() {//метод рендер вернет jsx
         return <>
 
-            {this.props.isFetching === true ? <Preloader/> : null} {/*лоадер*/}
+            {this.props.isFetching === true ? <Preloader/> : null}
 
             <Users totalCount={this.props.totalCount}
                    pageSize={this.props.pageSize}
@@ -43,7 +40,7 @@ class UsersContainer extends React.Component {
                    users={this.props.users}
                    followThC={this.props.followThC}
                    unfollowThC={this.props.unfollowThC}
-                   pageСurrent={this.props.pageСurrent}
+                   pageCurrent={this.props.pageCurrent}
                    followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -55,7 +52,7 @@ let mapStateToProps = (state) => {
         users: getUsersSelector(state),
         pageSize: getPageSize(state),
         totalCount: getTotalCount(state),
-        pageСurrent: getPageСurrent(state),
+        pageCurrent: getPageCurrent(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state)
     }
@@ -64,7 +61,7 @@ let mapStateToProps = (state) => {
 /*let AuthRedirectComponent = withHoc(UsersContainer);  И так и так можно */
 
 export default compose(
-    connect(mapStateToProps, {followThC, unfollowThC, setPageCurrent, getUsers: getUsersThunkCreator}),
+    connect(mapStateToProps, {followThC, unfollowThC, getPageCurrent, getUsers: getUsersThunkCreator}),
     withHoc
     )(UsersContainer);
 

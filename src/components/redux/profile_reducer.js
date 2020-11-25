@@ -1,8 +1,9 @@
 import {profileAPI, userAPI} from "../api/api";
 
-const ADD_POST = 'ADD_POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_PROFILE_STATUS ='SET_PROFILE_STATUS';
+const ADD_POST = 'myContact/profile/ADD_POST';
+const SET_USER_PROFILE = 'myContact/profile/SET_USER_PROFILE';
+const SET_PROFILE_STATUS = 'myContact/profile/SET_PROFILE_STATUS';
+const DELETE_POST = 'myContact/profile/DELETE_POST';
 
 let initialState = {
     post: [
@@ -42,7 +43,14 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profileStatus: action.status
-            }
+            };
+        case DELETE_POST:
+
+            return {
+                ...state,
+                post: state.post.filter(p => p.id != action.idPost)
+            };
+
 
         default:
             return state;
@@ -53,36 +61,34 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = (text) => ({type: ADD_POST, text});
 
+export const deletePostAC = (idPost) => ({type: DELETE_POST, idPost});
+
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
 export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        userAPI.getUserProfile(userId).then(data => {
+    return async (dispatch) => {
+        let data = await userAPI.getUserProfile(userId);
             dispatch(setUserProfile(data));
-        });
     }
 };
 
 const setUserStatus = (status) => ({type: SET_PROFILE_STATUS, status});
 
 export const getUserStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId).then(data => {
+    return async (dispatch) => {
+       let data = await profileAPI.getStatus(userId);
             dispatch(setUserStatus(data));
-
-        });
     }
 };
 
 export const updateUserStatus = (status) => {
-    return (dispatch) => {
-        profileAPI.putStatus(status).then(data => {
+    return async (dispatch) => {
+        let data = await profileAPI.putStatus(status);
             if (data.resultCode === 0) {
                 dispatch(setUserStatus(status));
             }
-        });
     }
-}
+};
 
 
 

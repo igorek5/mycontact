@@ -1,5 +1,7 @@
 import React from "react";
 import style from "./FormsControls.module.css"
+import {requiredField} from "../../utils/validators/Validators";
+import {Field} from "redux-form";
 
 
 
@@ -27,3 +29,7 @@ export const Input = ({input, meta, ...props}) => { // рест оператор
         </div>
     )
 };
+
+export const createFild = (component, type, name, placeholder, validate) => (
+    <Field component={component} type={type} name={name} placeholder={placeholder} validate={validate}/>
+)

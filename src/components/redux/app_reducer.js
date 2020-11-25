@@ -1,6 +1,6 @@
 import {getAuthUserData} from "./auth_reducer";
 
-const SET_INIZIALIZED = 'SET_INIZIALIZED';
+const SET_INIZIALIZED = 'myContact/app/SET_INIZIALIZED';
 
 let initialState = {
     initialized: false
@@ -28,7 +28,7 @@ export const setInitialized = () => {
             dispatch(initializedAC());
         })
     }
-}
+};
 
 
 

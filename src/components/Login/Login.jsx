@@ -1,25 +1,26 @@
 import React from "react";
 import style from './Login.module.css'
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormsControls/FormsControls";
+import {createFild, Input} from "../common/FormsControls/FormsControls";
 import {requiredField, maxLenghtValidator} from "../utils/validators/Validators";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
 const maxLenght10 = maxLenghtValidator(10);
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {    //деструктуризация на из props нужно handleSubmit, error
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <p>
-                <Field component={Input} type={"email"} name={"email"} placeholder={"Email"} validate={[requiredField]}/>
+                {createFild(Input, 'email', 'email', 'email', [requiredField])}
+                {/*<Field component={Input} type={"email"} name={"email"} placeholder={"Email"} validate={[requiredField]}/>*/}
             </p>
 
             <p>
                 <Field component={Input} type={"password"} name={"password"} placeholder={"Пароль"} validate={[requiredField]}/>
             </p>
 
-            {props.error && <div className={style.error_message}>{props.error}</div>}
+            {error && <div className={style.error_message}>{error}</div>}
 
             <div className={style.password_info}>
                 <label className={style.login_checkbox}>
