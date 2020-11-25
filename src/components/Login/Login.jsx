@@ -11,14 +11,14 @@ const maxLenght10 = maxLenghtValidator(10);
 const LoginForm = ({handleSubmit, error}) => {    //деструктуризация на из props нужно handleSubmit, error
     return (
         <form onSubmit={handleSubmit}>
-            <p>
+            <div>
                 {createFild(Input, 'email', 'email', 'email', [requiredField])}
                 {/*<Field component={Input} type={"email"} name={"email"} placeholder={"Email"} validate={[requiredField]}/>*/}
-            </p>
+            </div>
 
-            <p>
+            <div>
                 <Field component={Input} type={"password"} name={"password"} placeholder={"Пароль"} validate={[requiredField]}/>
-            </p>
+            </div>
 
             {error && <div className={style.error_message}>{error}</div>}
 
