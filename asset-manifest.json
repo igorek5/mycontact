@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/mycontact/static/css/main.9b0ec643.chunk.css",
+    "main.js": "/mycontact/static/js/main.e30ee6cc.chunk.js",
+    "main.js.map": "/mycontact/static/js/main.e30ee6cc.chunk.js.map",
+    "runtime-main.js": "/mycontact/static/js/runtime-main.4b7b2c05.js",
+    "runtime-main.js.map": "/mycontact/static/js/runtime-main.4b7b2c05.js.map",
+    "static/js/2.eebdc9f2.chunk.js": "/mycontact/static/js/2.eebdc9f2.chunk.js",
+    "static/js/2.eebdc9f2.chunk.js.map": "/mycontact/static/js/2.eebdc9f2.chunk.js.map",
+    "static/css/3.68d25050.chunk.css": "/mycontact/static/css/3.68d25050.chunk.css",
+    "static/js/3.21482389.chunk.js": "/mycontact/static/js/3.21482389.chunk.js",
+    "static/js/3.21482389.chunk.js.map": "/mycontact/static/js/3.21482389.chunk.js.map",
+    "index.html": "/mycontact/index.html",
+    "precache-manifest.8018ad8c787d5d5a39b0fe824a054e15.js": "/mycontact/precache-manifest.8018ad8c787d5d5a39b0fe824a054e15.js",
+    "service-worker.js": "/mycontact/service-worker.js",
+    "static/css/3.68d25050.chunk.css.map": "/mycontact/static/css/3.68d25050.chunk.css.map",
+    "static/css/main.9b0ec643.chunk.css.map": "/mycontact/static/css/main.9b0ec643.chunk.css.map",
+    "static/js/2.eebdc9f2.chunk.js.LICENSE.txt": "/mycontact/static/js/2.eebdc9f2.chunk.js.LICENSE.txt",
+    "static/media/metaballs.gif": "/mycontact/static/media/metaballs.12b75343.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4b7b2c05.js",
+    "static/js/2.eebdc9f2.chunk.js",
+    "static/css/main.9b0ec643.chunk.css",
+    "static/js/main.e30ee6cc.chunk.js"
+  ]
+}
